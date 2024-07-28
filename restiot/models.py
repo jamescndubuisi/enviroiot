@@ -76,9 +76,14 @@ class User(AbstractUser):
         send_mail(subject, message, from_email, [self.email], **kwargs)
 
 
-class SensorData(models.Model):
+class SensorDataPoint(models.Model):
     sensor_name = models.CharField(max_length=100, blank=True, null=True)
     sensor_value = models.CharField(max_length=100, blank=True, null=True)
     sensor_unit = models.CharField(max_length=100, blank=True, null=True)
     sensor_location = models.CharField(max_length=100, blank=True, null=True)
-    sensor_timestamp = models.CharField(max_length=100, blank=True, null=True)
+    sensor_generated_timestamp = models.DateTimeField(max_length=100, blank=True, null=True)
+    sensor_created_timestamp = models.DateTimeField(max_length=100, auto_now_add=True)
+    sensor_modified_timestamp = models.DateTimeField(max_length=100, auto_now=True)
+
+    def __str__(self):
+        return self.sensor_name

@@ -1,8 +1,8 @@
 from rest_framework import serializers
-from .models import SensorData
+from .models import SensorDataPoint
 
 
-class SensorDataSerializer(serializers.ModelSerializer):
+class SensorDataPointSerializer(serializers.ModelSerializer):
     class Meta:
-        model = SensorData
+        model = SensorDataPoint
         fields = '__all__'

@@ -1,19 +1,76 @@
 from django.contrib import admin
-
-# Register your models here.
-from django.contrib import admin
-from rest_framework.authtoken.models import Token
-from rest_framework.authtoken.admin import TokenAdmin
+from .models import User, SensorDataPoint
+from django.contrib.auth.admin import UserAdmin
+from django.utils.translation import gettext_lazy as _
 
 
-class CustomTokenAdmin(TokenAdmin):
-    list_display = ('key', 'user', 'created')
-    fields = ('user',)
-    ordering = ('-created',)
+class AccountAdmin(UserAdmin):
+    ordering = ["id"]
+    list_display = (
+        "email",
+        "is_staff",
+        "is_active",
+    )
+    list_filter = (
+        "email",
+        "is_staff",
+        "is_active",
+    )
+    readonly_fields = ("date_joined", "last_login")
+    fieldsets = (
+        (
+            _("User Details"),
+            {
+                "fields": (
+                    "email",
+                    "password",
+                )
+            },
+        ),
+        (
+            _("Permission"),
+            {
+                "fields": (
+                    "is_active",
+                    "is_staff",
+                    "groups",
+                    "user_permissions",
+                )
+            },
+        ),
+        (
+            _("Important dates"),
+            {"fields": ("last_login", "date_joined")},
+        ),
+    )
+    add_fieldsets = (
+        (
+            "User Details",
+            {
+                "fields": (
+                    "email",
+                    "password1",
+                    "password2",
+                    "first_name",
+                    "last_name",
+                )
+            },
+        ),
+        (
+            "Permission",
+            {
+                "fields": (
+                    "is_active",
+                    "is_staff",
+                    "is_superuser",
+                    "groups",
+                    "user_permissions",
+                )
+            },
+        ),
+    )
 
 
-# Unregister the default TokenAdmin
-# admin.site.unregister(Token)
+admin.site.register(User, AccountAdmin)
+admin.site.register(SensorDataPoint)
 
-# Register our CustomTokenAdmin
-admin.site.register(Token, CustomTokenAdmin)

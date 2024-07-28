@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    "crispy_forms",
+    "crispy_bootstrap5",
     'rest_framework.authtoken',
     "webiot.apps.WebiotConfig",
     "restiot.apps.RestiotConfig"

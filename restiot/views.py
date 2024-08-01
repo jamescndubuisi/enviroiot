@@ -2,9 +2,10 @@
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import TokenAuthentication
-from .models import SensorDataPoint
+from .models import SensorDataPoint, AirData, AirQualityData, SoundData, LightData, ParticleData
 from rest_framework import generics
-from .serializers import SensorDataPointSerializer
+from .serializers import SensorDataPointSerializer, AirDataSerializer, AirQualityDataSerializer, SoundDataSerializer, \
+    LightDataSerializer, ParticleDataSerializer
 
 
 # class SensorDataViewSet(viewsets.ModelViewSet):
@@ -80,6 +81,56 @@ class SensorDataPointViewSet(viewsets.ModelViewSet):
     """
     queryset = SensorDataPoint.objects.all()
     serializer_class = SensorDataPointSerializer
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+
+
+class AirDataPointViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows sensor data points to be viewed or edited.
+    """
+    queryset = AirData.objects.all()
+    serializer_class = AirDataSerializer
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+
+
+class AirQualityDataPointViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows sensor data points to be viewed or edited.
+    """
+    queryset = AirQualityData.objects.all()
+    serializer_class = AirQualityDataSerializer
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+
+
+class LightDataPointViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows sensor data points to be viewed or edited.
+    """
+    queryset = LightData.objects.all()
+    serializer_class = LightDataSerializer
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+
+
+class SoundDataPointViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows sensor data points to be viewed or edited.
+    """
+    queryset = SoundData.objects.all()
+    serializer_class = SoundDataSerializer
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+
+
+class ParticleDataPointViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows sensor data points to be viewed or edited.
+    """
+    queryset = ParticleData.objects.all()
+    serializer_class = ParticleDataSerializer
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
 

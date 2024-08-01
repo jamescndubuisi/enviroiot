@@ -81,9 +81,9 @@ class SensorDataPoint(models.Model):
     sensor_value = models.CharField(max_length=100, blank=True, null=True)
     sensor_unit = models.CharField(max_length=100, blank=True, null=True)
     sensor_location = models.CharField(max_length=100, blank=True, null=True)
-    sensor_generated_timestamp = models.DateTimeField(max_length=100, blank=True, null=True)
-    sensor_created_timestamp = models.DateTimeField(max_length=100, auto_now_add=True)
-    sensor_modified_timestamp = models.DateTimeField(max_length=100, auto_now=True)
+    generated_timestamp = models.DateTimeField(max_length=100, blank=True, null=True)
+    created_timestamp = models.DateTimeField(max_length=100, auto_now_add=True)
+    modified_timestamp = models.DateTimeField(max_length=100, auto_now=True)
 
     def __str__(self):
         return self.sensor_name
@@ -152,6 +152,14 @@ class SoundData(models.Model):
         return f"Sound Data {self.generated_timestamp} {self.sound_decibel_SPL_dBA} {self.sound_unit}"
 
 
+class ParticleData(models.Model):
+    particle_concentration = models.CharField(max_length=10, blank=True, null=True)
+    particle_concentration_unit = models.CharField(max_length=10, blank=True, null=True)
+    particle_duty_cycle_pc = models.CharField(max_length=10, blank=True, null=True)
+    particle_valid = models.CharField(max_length=10, blank=True, null=True)
+    generated_timestamp = models.DateTimeField(max_length=100, auto_now_add=True)
+    created_timestamp = models.DateTimeField(max_length=100, auto_now_add=True)
+    modified_timestamp = models.DateTimeField(max_length=100, auto_now=True)
 
 
 

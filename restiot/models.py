@@ -87,3 +87,71 @@ class SensorDataPoint(models.Model):
 
     def __str__(self):
         return self.sensor_name
+
+
+class AirData(models.Model):
+    temperature_value = models.CharField(max_length=10, blank=True, null=True)
+    temperature_unit = models.CharField(max_length=10, blank=True, null=True)
+    temperature_celsius = models.CharField(max_length=100, blank=True, null=True)
+    temperature_fahrenheit = models.DateTimeField(max_length=100, blank=True, null=True)
+    pressure_value = models.CharField(max_length=10, blank=True, null=True)
+    pressure_unit = models.CharField(max_length=10, blank=True, null=True)
+    humidity_value = models.CharField(max_length=10, blank=True, null=True)
+    humidity_unit = models.CharField(max_length=10, blank=True, null=True)
+    gas_sensor_resistance = models.CharField(max_length=10, blank=True, null=True)
+    generated_timestamp = models.DateTimeField(max_length=100, auto_now_add=True)
+    created_timestamp = models.DateTimeField(max_length=100, auto_now_add=True)
+    modified_timestamp = models.DateTimeField(max_length=100, auto_now=True)
+
+    def __str__(self):
+        return f"Air Data {self.generated_timestamp} {self.temperature_value} {self.temperature_unit} "
+
+
+class AirQualityData(models.Model):
+    air_quality_index = models.CharField(max_length=10, blank=True, null=True)
+    air_quality_class = models.CharField(max_length=10, blank=True, null=True)
+    carbon_dioxide_value = models.CharField(max_length=10, blank=True)
+    breath_equivalent_voc = models.CharField(max_length=10, blank=True)
+    air_quality_calibration_status = models.CharField(max_length=10, blank=True)
+    generated_timestamp = models.DateTimeField(max_length=100, auto_now_add=True)
+    created_timestamp = models.DateTimeField(max_length=100, auto_now_add=True)
+    modified_timestamp = models.DateTimeField(max_length=100, auto_now=True)
+
+    def __str__(self):
+        return f"Air Quality Data {self.generated_timestamp} {self.air_quality_index} {self.air_quality_class} "
+
+
+class LightData(models.Model):
+    light_lux = models.CharField(max_length=10, blank=True, null=True)
+    light_unit = models.CharField(max_length=10, blank=True, null=True)
+    white_level_balance = models.CharField(max_length=100, blank=True, null=True)
+    generated_timestamp = models.DateTimeField(max_length=100, auto_now_add=True)
+    created_timestamp = models.DateTimeField(max_length=100, auto_now_add=True)
+    modified_timestamp = models.DateTimeField(max_length=100, auto_now=True)
+
+    def __str__(self):
+        return f"Light Data {self.generated_timestamp} {self.light_lux} {self.light_unit} "
+
+
+class SoundData(models.Model):
+    sound_decibel_SPL_dBA = models.CharField(max_length=10, blank=True, null=True)
+    sound_unit = models.CharField(max_length=10, blank=True, null=True)
+    frequency_band_125 = models.CharField(max_length=100, blank=True, null=True)
+    frequency_band_250 = models.CharField(max_length=100, blank=True, null=True)
+    frequency_band_500 = models.CharField(max_length=100, blank=True, null=True)
+    frequency_band_1000 = models.CharField(max_length=100, blank=True, null=True)
+    frequency_band_2000 = models.CharField(max_length=100, blank=True, null=True)
+    frequency_band_4000 = models.CharField(max_length=100, blank=True, null=True)
+    peak_amp_mPa = models.CharField(max_length=100, blank=True, null=True)
+    stable = models.CharField(max_length=100, blank=True, null=True)
+    generated_timestamp = models.DateTimeField(max_length=100, auto_now_add=True)
+    created_timestamp = models.DateTimeField(max_length=100, auto_now_add=True)
+    modified_timestamp = models.DateTimeField(max_length=100, auto_now=True)
+
+    def __str__(self):
+        return f"Sound Data {self.generated_timestamp} {self.sound_decibel_SPL_dBA} {self.sound_unit}"
+
+
+
+
+

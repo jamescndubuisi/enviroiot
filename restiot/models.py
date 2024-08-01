@@ -1,11 +1,9 @@
+from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.models import AbstractUser, BaseUserManager
-from django.utils.translation import gettext_lazy as _  # Django 4.0
-from django.core.mail import send_mail
 from django.contrib.auth.models import PermissionsMixin
-
-from django.contrib.auth.models import AbstractUser, BaseUserManager
-
+from django.core.mail import send_mail
 from django.db import models
+from django.utils.translation import gettext_lazy as _  # Django 4.0
 
 
 class UserManager(BaseUserManager):
@@ -90,15 +88,15 @@ class SensorDataPoint(models.Model):
 
 
 class AirData(models.Model):
-    temperature_value = models.CharField(max_length=10, blank=True, null=True)
+    temperature_value = models.FloatField(max_length=10, blank=True, null=True)
     temperature_unit = models.CharField(max_length=10, blank=True, null=True)
-    temperature_celsius = models.CharField(max_length=100, blank=True, null=True)
+    temperature_celsius = models.FloatField(max_length=100, blank=True, null=True)
     temperature_fahrenheit = models.DateTimeField(max_length=100, blank=True, null=True)
-    pressure_value = models.CharField(max_length=10, blank=True, null=True)
+    pressure_value = models.FloatField(max_length=10, blank=True, null=True)
     pressure_unit = models.CharField(max_length=10, blank=True, null=True)
-    humidity_value = models.CharField(max_length=10, blank=True, null=True)
+    humidity_value = models.FloatField(max_length=10, blank=True, null=True)
     humidity_unit = models.CharField(max_length=10, blank=True, null=True)
-    gas_sensor_resistance = models.CharField(max_length=10, blank=True, null=True)
+    gas_sensor_resistance = models.FloatField(max_length=10, blank=True, null=True)
     generated_timestamp = models.DateTimeField(max_length=100, auto_now_add=True)
     created_timestamp = models.DateTimeField(max_length=100, auto_now_add=True)
     modified_timestamp = models.DateTimeField(max_length=100, auto_now=True)
@@ -108,23 +106,52 @@ class AirData(models.Model):
 
 
 class AirQualityData(models.Model):
-    air_quality_index = models.CharField(max_length=10, blank=True, null=True)
+    air_quality_index = models.FloatField(max_length=10, blank=True, null=True)
     air_quality_class = models.CharField(max_length=10, blank=True, null=True)
-    carbon_dioxide_value = models.CharField(max_length=10, blank=True)
-    breath_equivalent_voc = models.CharField(max_length=10, blank=True)
-    air_quality_calibration_status = models.CharField(max_length=10, blank=True)
+    carbon_dioxide_value = models.FloatField(max_length=10, blank=True)
+    breath_equivalent_voc = models.FloatField(max_length=10, blank=True)
+    air_quality_calibration_status = models.IntegerField(max_length=10, blank=True)
+    air_quality_calibration_meaning = models.CharField(max_length=10, blank=True)
     generated_timestamp = models.DateTimeField(max_length=100, auto_now_add=True)
     created_timestamp = models.DateTimeField(max_length=100, auto_now_add=True)
     modified_timestamp = models.DateTimeField(max_length=100, auto_now=True)
+
+    def interpret_aqi_accuracy(self):
+        """Provide a readable interpretation of the air quality accuracy code."""
+        if self.air_quality_calibration_status == 1:
+            self.air_quality_calibration_meaning = "Low accuracy, self-calibration ongoing"
+        elif self.air_quality_calibration_status == 2:
+            self.air_quality_calibration_meaning = "Medium accuracy, self-calibration ongoing"
+        elif self.air_quality_calibration_status == 3:
+            self.air_quality_calibration_meaning = "High accuracy"
+        else:
+            self.air_quality_calibration_meaning = "Not yet valid, self-calibration incomplete"
+
+        return self.air_quality_calibration_meaning
+
+    def interpret_aqi_value(self):
+        """Provide a readable interpretation of the AQI (air quality index)."""
+        if self.air_quality_index < 50:
+            self.air_quality_class = "Good"
+        elif self.air_quality_index < 100:
+            self.air_quality_class = "Acceptable"
+        elif self.air_quality_index < 150:
+            self.air_quality_class = "Substandard"
+        elif self.air_quality_index < 200:
+            self.air_quality_class = "Poor"
+        elif self.air_quality_index < 300:
+            self.air_quality_class = "Bad"
+        else:
+            self.air_quality_class = "Very bad"
 
     def __str__(self):
         return f"Air Quality Data {self.generated_timestamp} {self.air_quality_index} {self.air_quality_class} "
 
 
 class LightData(models.Model):
-    light_lux = models.CharField(max_length=10, blank=True, null=True)
+    light_lux = models.FloatField(max_length=10, blank=True, null=True)
     light_unit = models.CharField(max_length=10, blank=True, null=True)
-    white_level_balance = models.CharField(max_length=100, blank=True, null=True)
+    white_level_balance = models.FloatField(max_length=100, blank=True, null=True)
     generated_timestamp = models.DateTimeField(max_length=100, auto_now_add=True)
     created_timestamp = models.DateTimeField(max_length=100, auto_now_add=True)
     modified_timestamp = models.DateTimeField(max_length=100, auto_now=True)
@@ -134,16 +161,16 @@ class LightData(models.Model):
 
 
 class SoundData(models.Model):
-    sound_decibel_SPL_dBA = models.CharField(max_length=10, blank=True, null=True)
+    sound_decibel_SPL_dBA = models.FloatField(max_length=10, blank=True, null=True)
     sound_unit = models.CharField(max_length=10, blank=True, null=True)
-    frequency_band_125 = models.CharField(max_length=100, blank=True, null=True)
-    frequency_band_250 = models.CharField(max_length=100, blank=True, null=True)
-    frequency_band_500 = models.CharField(max_length=100, blank=True, null=True)
-    frequency_band_1000 = models.CharField(max_length=100, blank=True, null=True)
-    frequency_band_2000 = models.CharField(max_length=100, blank=True, null=True)
-    frequency_band_4000 = models.CharField(max_length=100, blank=True, null=True)
-    peak_amp_mPa = models.CharField(max_length=100, blank=True, null=True)
-    stable = models.CharField(max_length=100, blank=True, null=True)
+    frequency_band_125 = models.FloatField(max_length=100, blank=True, null=True)
+    frequency_band_250 = models.FloatField(max_length=100, blank=True, null=True)
+    frequency_band_500 = models.FloatField(max_length=100, blank=True, null=True)
+    frequency_band_1000 = models.FloatField(max_length=100, blank=True, null=True)
+    frequency_band_2000 = models.FloatField(max_length=100, blank=True, null=True)
+    frequency_band_4000 = models.FloatField(max_length=100, blank=True, null=True)
+    peak_amp_mPa = models.FloatField(max_length=100, blank=True, null=True)
+    stable = models.FloatField(max_length=100, blank=True, null=True)
     generated_timestamp = models.DateTimeField(max_length=100, auto_now_add=True)
     created_timestamp = models.DateTimeField(max_length=100, auto_now_add=True)
     modified_timestamp = models.DateTimeField(max_length=100, auto_now=True)
@@ -153,13 +180,10 @@ class SoundData(models.Model):
 
 
 class ParticleData(models.Model):
-    particle_concentration = models.CharField(max_length=10, blank=True, null=True)
+    particle_concentration = models.FloatField(max_length=10, blank=True, null=True)
     particle_concentration_unit = models.CharField(max_length=10, blank=True, null=True)
-    particle_duty_cycle_pc = models.CharField(max_length=10, blank=True, null=True)
-    particle_valid = models.CharField(max_length=10, blank=True, null=True)
+    particle_duty_cycle_pc = models.FloatField(max_length=10, blank=True, null=True)
+    particle_valid = models.BooleanField(max_length=10, blank=True, null=True)
     generated_timestamp = models.DateTimeField(max_length=100, auto_now_add=True)
     created_timestamp = models.DateTimeField(max_length=100, auto_now_add=True)
     modified_timestamp = models.DateTimeField(max_length=100, auto_now=True)
-
-
-

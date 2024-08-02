@@ -16,7 +16,9 @@ Including another URLconf
 """
 
 from django.urls import path
-from .views import login_page, homepage, sign_up, AirDataChartView, air_data_json, AirDataPlotlyView
+from .views import (login_page, homepage, sign_up, AirDataChartView, AirQualityDataChartView,
+                    air_data_json,air_quality_data_json, AirDataPlotlyView, light_data_json,
+                    LightDataChartView)
 from django.contrib.auth.views import LogoutView
 
 
@@ -26,7 +28,16 @@ urlpatterns = [
      path('logout', LogoutView.as_view(), name='logout'),
      path('register', sign_up, name="register"),
      path('air-data-chart/', AirDataChartView.as_view(), name='air_data_chart'),
+
      path('airplotlychart/', AirDataPlotlyView.as_view(), name='air_data_plotly_chart'),
      path('air-data-json/', air_data_json, name='air_data_json'),
+
+     path('air-quality-data-chart/', AirQualityDataChartView.as_view(), name='air_quality_data_chart'),
+     path('airquality-data-json/', air_quality_data_json, name='airquality_data_json'),
+
+
+     path('light-data-json/', light_data_json, name='light_data_json'),
+     path('light-data-chart/', LightDataChartView.as_view(), name='air_data_chart'),
+
 
 ]

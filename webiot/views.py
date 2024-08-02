@@ -3,7 +3,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
-from restiot.models import AirData
+from restiot.models import AirData, AirQualityData, LightData, ParticleData, SoundData, SensorDataPoint, User
 from . import forms
 from django.http import JsonResponse
 
@@ -60,15 +60,20 @@ def sign_up(request):
 
 
 def create_charts(requests):
-
     return render(requests, 'webiot/charts.html', {})
 
 
 class AirDataChartView(TemplateView):
     template_name = 'webiot/airdatachart.html'
 
+
+class AirQualityDataChartView(TemplateView):
+    template_name = 'webiot/airqualitydata.html'
+
+
 class AirDataPlotlyView(TemplateView):
     template_name = 'webiot/plotlycharts.html'
+
 
 def air_data_json(request):
     data = AirData.objects.order_by('-generated_timestamp')[:100]  # Last 100 entries
@@ -79,3 +84,24 @@ def air_data_json(request):
         'pressure': [entry.pressure_value for entry in data],
     })
 
+
+def air_quality_data_json(request):
+    data = AirQualityData.objects.order_by('-generated_timestamp')[:100]  # Last 100 entries
+    return JsonResponse({
+        'labels': [entry.generated_timestamp.strftime('%Y-%m-%d %H:%M:%S') for entry in data],
+        'airqualityindex': [entry.air_quality_index for entry in data],
+        'carbondioxide': [entry.carbon_dioxide_value for entry in data],
+        'breathequivalentvoc': [entry.breath_equivalent_voc for entry in data],
+    })
+
+
+def light_data_json(request):
+    data = LightData.objects.order_by('-generated_timestamp')[:100]  # Last 100 entries
+    return JsonResponse({
+        'labels': [entry.generated_timestamp.strftime('%Y-%m-%d %H:%M:%S') for entry in data],
+        'light_lux': [entry.light_lux for entry in data],
+        'white_level_balance': [entry.white_level_balance for entry in data],
+    })
+
+class LightDataChartView(TemplateView):
+    template_name = 'webiot/lightdatachart.html'

@@ -75,6 +75,9 @@ class AirDataPlotlyView(TemplateView):
     template_name = 'webiot/plotlycharts.html'
 
 
+class AirDataBoxView(TemplateView):
+    template_name = 'webiot/airdataboxes.html'
+
 def air_data_json(request):
     data = AirData.objects.order_by('-generated_timestamp')[:100]  # Last 100 entries
     return JsonResponse({
@@ -105,3 +108,17 @@ def light_data_json(request):
 
 class LightDataChartView(TemplateView):
     template_name = 'webiot/lightdatachart.html'
+
+
+def particle_data_json(request):
+    data = ParticleData.objects.order_by('-generated_timestamp')[:100]  # Last 100 entries
+    return JsonResponse({
+        'labels': [entry.generated_timestamp.strftime('%Y-%m-%d %H:%M:%S') for entry in data],
+        'particle_concentration': [entry.particle_concentration for entry in data],
+        'particle_duty_cycle_pc': [entry.particle_duty_cycle_pc for entry in data],
+        'particle_valid': [entry.particle_valid for entry in data],
+    })
+
+
+class ParticleDataChartView(TemplateView):
+    template_name = 'webiot/particledatachart.html'

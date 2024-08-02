@@ -124,5 +124,21 @@ class ParticleDataChartView(TemplateView):
     template_name = 'webiot/particledatachart.html'
 
 
-# class HomeDataChartView(TemplateView):
-#     template_name = 'webiot/index.html'
+class SoundDataChartView(TemplateView):
+    template_name = 'webiot/sounddatachart.html'
+
+
+def sound_data_json(request):
+    data = SoundData.objects.order_by('-generated_timestamp')[:100]  # Last 100 entries
+    return JsonResponse({
+        'labels': [entry.generated_timestamp.strftime('%Y-%m-%d %H:%M:%S') for entry in data],
+        'sound_decibel_SPL_dBA': [entry.sound_decibel_SPL_dBA for entry in data],
+        'frequency_band_125': [entry.frequency_band_125 for entry in data],
+        'frequency_band_250': [entry.frequency_band_250 for entry in data],
+        'frequency_band_500': [entry.frequency_band_500 for entry in data],
+        'frequency_band_1000': [entry.frequency_band_1000 for entry in data],
+        'frequency_band_2000': [entry.frequency_band_2000 for entry in data],
+        'frequency_band_4000': [entry.frequency_band_4000 for entry in data],
+        'peak_amp_mPa': [entry.peak_amp_mPa for entry in data],
+        'stable': [entry.stable for entry in data],
+    })

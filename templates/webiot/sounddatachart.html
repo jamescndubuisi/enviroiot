@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sound Data Dashboard</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@1.0.0/dist/chartjs-adapter-moment.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+        .dashboard {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+            gap: 20px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        .chart-container {
+            flex: 1 1 calc(33.333% - 20px);
+            min-width: 300px;
+            height: 400px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            box-sizing: border-box;
+            transition: box-shadow 0.3s ease;
+        }
+        .chart-container:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        .chart-title {
+            text-align: center;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        canvas {
+            width: 100% !important;
+            height: calc(100% - 40px) !important;
+        }
+        @media (max-width: 1200px) {
+            .chart-container {
+                flex: 1 1 calc(50% - 20px);
+            }
+        }
+        @media (max-width: 768px) {
+            .chart-container {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+{% block content %}
+<div class="dashboard">
+    <div class="chart-container">
+        <h2 class="chart-title"><i class="fas fa-volume-up"></i> Sound Decibel (SPL dBA)</h2>
+        <canvas id="soundDecibelChart"></canvas>
+    </div>
+
+    <div class="chart-container">
+        <h2 class="chart-title"><i class="fas fa-wave-square"></i> Frequency Bands</h2>
+        <canvas id="frequencyBandsChart"></canvas>
+    </div>
+
+    <div class="chart-container">
+        <h2 class="chart-title"><i class="fas fa-tachometer-alt"></i> Peak Amplitude (mPa)</h2>
+        <canvas id="peakAmpChart"></canvas>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    fetch('{% url "sound_data_json" %}')
+        .then(response => response.json())
+        .then(data => {
+            const ctx1 = document.getElementById('soundDecibelChart').getContext('2d');
+            const ctx2 = document.getElementById('frequencyBandsChart').getContext('2d');
+            const ctx3 = document.getElementById('peakAmpChart').getContext('2d');
+
+            const commonOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        type: 'time',
+                        time: {
+                            parser: 'YYYY-MM-DD HH:mm:ss',
+                            tooltipFormat: 'll HH:mm'
+                        },
+                        title: {
+                            display: true,
+                            text: 'Time'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    }
+                }
+            };
+
+            new Chart(ctx1, {
+                type: 'line',
+                data: {
+                    labels: data.labels,
+                    datasets: [{
+                        label: 'Sound Decibel (SPL dBA)',
+                        data: data.sound_decibel_SPL_dBA,
+                        borderColor: 'rgb(75, 192, 192)',
+                        tension: 0.1,
+                        fill: false
+                    }]
+                },
+                options: {
+                    ...commonOptions,
+                    scales: {
+                        ...commonOptions.scales,
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'dBA'
+                            }
+                        }
+                    }
+                }
+            });
+
+            new Chart(ctx2, {
+                type: 'line',
+                data: {
+                    labels: data.labels,
+                    datasets: [
+                        {label: '125 Hz', data: data.frequency_band_125, borderColor: 'rgb(255, 99, 132)'},
+                        {label: '250 Hz', data: data.frequency_band_250, borderColor: 'rgb(54, 162, 235)'},
+                        {label: '500 Hz', data: data.frequency_band_500, borderColor: 'rgb(255, 206, 86)'},
+                        {label: '1000 Hz', data: data.frequency_band_1000, borderColor: 'rgb(75, 192, 192)'},
+                        {label: '2000 Hz', data: data.frequency_band_2000, borderColor: 'rgb(153, 102, 255)'},
+                        {label: '4000 Hz', data: data.frequency_band_4000, borderColor: 'rgb(255, 159, 64)'}
+                    ]
+                },
+                options: {
+                    ...commonOptions,
+                    scales: {
+                        ...commonOptions.scales,
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Amplitude'
+                            }
+                        }
+                    }
+                }
+            });
+
+            new Chart(ctx3, {
+                type: 'line',
+                data: {
+                    labels: data.labels,
+                    datasets: [{
+                        label: 'Peak Amplitude (mPa)',
+                        data: data.peak_amp_mPa,
+                        borderColor: 'rgb(255, 159, 64)',
+                        tension: 0.1,
+                        fill: false,
+                        pointRadius: 2,
+                        pointHoverRadius: 5
+                    }]
+                },
+                options: {
+                    ...commonOptions,
+                    scales: {
+                        ...commonOptions.scales,
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'mPa'
+                            },
+                            beginAtZero: true
+                        }
+                    },
+                    plugins: {
+                        ...commonOptions.plugins,
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.y !== null) {
+                                        label += context.parsed.y.toFixed(2) + ' mPa';
+                    return label;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+});
+</script>
+{% endblock %}
+
+</body>
+</html>

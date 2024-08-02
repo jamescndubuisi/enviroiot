@@ -122,3 +122,7 @@ def particle_data_json(request):
 
 class ParticleDataChartView(TemplateView):
     template_name = 'webiot/particledatachart.html'
+
+
+# class HomeDataChartView(TemplateView):
+#     template_name = 'webiot/index.html'

@@ -1,117 +1,105 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Air Data Display</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
-        }
+{% block content %}
 
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-        }
+<style>
 
-        .box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            text-align: center;
-            width: 150px;
-            height: 150px;
-            font-size: 18px;
-        }
 
-        .green {
-            background-color: green;
-            color: white;
-        }
+    .containers {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+    }
 
-        .yellow {
-            background-color: yellow;
-            color: black;
-        }
+    .box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        text-align: center;
+        width: 150px;
+        height: 150px;
+        font-size: 18px;
+    }
 
-        .red {
-            background-color: red;
-            color: white;
-        }
+    .green {
+        background-color: green;
+        color: white;
+    }
 
-        .icon {
-            font-size: 36px;
-            margin-bottom: 10px;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div id="temperature-box" class="box">
-            <i class="fas fa-thermometer-half icon"></i>
-            Temperature: <span id="temperature-value"></span>
-        </div>
-        <div id="pressure-box" class="box">
-            <i class="fas fa-tachometer-alt icon"></i>
-            Pressure: <span id="pressure-value"></span>
-        </div>
-        <div id="humidity-box" class="box">
-            <i class="fas fa-tint icon"></i>
-            Humidity: <span id="humidity-value"></span>
-        </div>
+    .yellow {
+        background-color: yellow;
+        color: black;
+    }
+
+    .red {
+        background-color: red;
+        color: white;
+    }
+
+    .icon {
+        font-size: 36px;
+        margin-bottom: 10px;
+    }
+</style>
+
+<div class="containers">
+    <div id="temperature-box" class="box">
+        <i class="fas fa-thermometer-half icon"></i>
+        Temperature: <span id="temperature-value"></span>
     </div>
-    <script>
-        async function fetchData() {
-            try {
-                const response = await fetch('/air-data-json/');
-                const data = await response.json();
+    <div id="pressure-box" class="box">
+        <i class="fas fa-tachometer-alt icon"></i>
+        Pressure: <span id="pressure-value"></span>
+    </div>
+    <div id="humidity-box" class="box">
+        <i class="fas fa-tint icon"></i>
+        Humidity: <span id="humidity-value"></span>
+    </div>
+</div>
+<script>
+    async function fetchData() {
+        try {
+            const response = await fetch('/air-data-json/');
+            const data = await response.json();
 
-                const latestData = data.temperature.length > 0 ? data.temperature.length - 1 : 0;
+            const latestData = data.temperature.length > 0 ? data.temperature.length - 1 : 0;
 
-                const temperatureValue = data.temperature[latestData];
-                const pressureValue = data.pressure[latestData];
-                const humidityValue = data.humidity[latestData];
+            const temperatureValue = data.temperature[latestData];
+            const pressureValue = data.pressure[latestData];
+            const humidityValue = data.humidity[latestData];
 
-                updateBox('temperature-box', 'temperature-value', temperatureValue, 20, 25, 10, 47); // Example thresholds for temperature
-                updateBox('pressure-box', 'pressure-value', pressureValue, 950, 1050, 600, 2000); // Example thresholds for pressure
-                updateBox('humidity-box', 'humidity-value', humidityValue, 30, 70, 20, 90); // Example thresholds for humidity
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
+            updateBox('temperature-box', 'temperature-value', temperatureValue, 20, 25, 10, 47); // Example thresholds for temperature
+            updateBox('pressure-box', 'pressure-value', pressureValue, 950, 1050, 600, 2000); // Example thresholds for pressure
+            updateBox('humidity-box', 'humidity-value', humidityValue, 30, 70, 20, 90); // Example thresholds for humidity
+        } catch (error) {
+            console.error('Error fetching data:', error);
         }
+    }
 
-        function updateBox(boxId, valueId, value, lowGreenThreshold, highGreenThreshold, lowYellowThreshold, highYellowThreshold) {
-            const box = document.getElementById(boxId);
-            const valueElement = document.getElementById(valueId);
+    function updateBox(boxId, valueId, value, lowGreenThreshold, highGreenThreshold, lowYellowThreshold, highYellowThreshold) {
+        const box = document.getElementById(boxId);
+        const valueElement = document.getElementById(valueId);
 
-            valueElement.textContent = value;
+        valueElement.textContent = value;
 
-            if (value >= lowGreenThreshold && value <= highGreenThreshold) {
-                box.className = 'box green';
-            } else if ((value >= lowYellowThreshold && value < lowGreenThreshold) || (value > highGreenThreshold && value <= highYellowThreshold)) {
-                box.className = 'box yellow';
-            } else {
-                box.className = 'box red';
-            }
+        if (value >= lowGreenThreshold && value <= highGreenThreshold) {
+            box.className = 'box green';
+        } else if ((value >= lowYellowThreshold && value < lowGreenThreshold) || (value > highGreenThreshold && value <= highYellowThreshold)) {
+            box.className = 'box yellow';
+        } else {
+            box.className = 'box red';
         }
+    }
 
-        document.addEventListener('DOMContentLoaded', function() {
-            fetchData();
-            setInterval(fetchData, 60000); // Refresh every minute
-        });
-    </script>
-</body>
-</html>
+    document.addEventListener('DOMContentLoaded', function() {
+        fetchData();
+        setInterval(fetchData, 60000); // Refresh every minute
+    });
+</script>
+
+
+{% endblock %}
+

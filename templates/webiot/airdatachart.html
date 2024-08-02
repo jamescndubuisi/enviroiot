@@ -1,0 +1,61 @@
+{% extends "webiot/base.html" %}
+{% block content %}
+<canvas id="airDataChart"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+let chart;
+
+function createChart(data) {
+    const ctx = document.getElementById('airDataChart').getContext('2d');
+    chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: data.labels,
+            datasets: [{
+                label: 'Temperature (°C)',
+                data: data.temperature,
+                borderColor: 'red',
+                fill: false
+            }, {
+                label: 'Humidity (%)',
+                data: data.humidity,
+                borderColor: 'blue',
+                fill: false
+            }, {
+                label: 'Pressure',
+                data: data.pressure,
+                borderColor: 'green',
+                fill: false
+            }]
+        },
+        options: {
+            responsive: true,
+            title: {
+                display: true,
+                text: 'Air Data'
+            }
+        }
+    });
+}
+
+function updateChart() {
+    fetch('/air-data-json/')
+        .then(response => response.json())
+        .then(data => {
+            if (chart) {
+                chart.data.labels = data.labels;
+                chart.data.datasets[0].data = data.temperature;
+                chart.data.datasets[1].data = data.humidity;
+                chart.data.datasets[2].data = data.pressure;
+                chart.update();
+            } else {
+                createChart(data);
+            }
+        });
+}
+
+updateChart();
+setInterval(updateChart, 60000);  // Update every minute
+</script>
+{% endblock %}

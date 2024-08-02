@@ -2,8 +2,10 @@ from django.contrib import messages
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
+from django.views.generic import TemplateView
+from restiot.models import AirData
 from . import forms
-
+from django.http import JsonResponse
 
 # Create your views here.
 
@@ -55,3 +57,22 @@ def sign_up(request):
             return render(request, 'registration/register.html')
     context['form'] = form
     return render(request, 'registration/register.html', context)
+
+
+def create_charts(requests):
+
+    return render(requests, 'webiot/charts.html', {})
+
+
+class AirDataChartView(TemplateView):
+    template_name = 'webiot/airdatachart.html'
+
+def air_data_json(request):
+    data = AirData.objects.order_by('-generated_timestamp')[:100]  # Last 100 entries
+    return JsonResponse({
+        'labels': [entry.generated_timestamp.strftime('%Y-%m-%d %H:%M:%S') for entry in data],
+        'temperature': [entry.temperature_celsius for entry in data],
+        'humidity': [entry.humidity_value for entry in data],
+        'pressure': [entry.pressure_value for entry in data],
+    })
+

@@ -16,15 +16,16 @@ Including another URLconf
 """
 
 from django.urls import path
-from .views import login_page, homepage, sign_up
+from .views import login_page, homepage, sign_up, AirDataChartView, air_data_json
 from django.contrib.auth.views import LogoutView
+
 
 urlpatterns = [
      path('', homepage, name="home"),
      path('login', login_page, name='signin'),
      path('logout', LogoutView.as_view(), name='logout'),
      path('register', sign_up, name="register"),
+     path('air-data-chart/', AirDataChartView.as_view(), name='air_data_chart'),
+     path('air-data-json/', air_data_json, name='air_data_json'),
 
 ]
-
-

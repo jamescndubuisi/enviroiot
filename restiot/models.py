@@ -79,9 +79,13 @@ class SensorDataPoint(models.Model):
     sensor_value = models.CharField(max_length=100, blank=True, null=True)
     sensor_unit = models.CharField(max_length=100, blank=True, null=True)
     sensor_location = models.CharField(max_length=100, blank=True, null=True)
-    generated_timestamp = models.DateTimeField(max_length=100, blank=True, null=True)
+    generated_timestamp = models.DateTimeField(max_length=100,auto_now_add=True, blank=True, null=True)
     created_timestamp = models.DateTimeField(max_length=100, auto_now_add=True)
     modified_timestamp = models.DateTimeField(max_length=100, auto_now=True)
+
+    class Meta:
+        verbose_name = _("Sensor Data")
+        verbose_name_plural = _("Sensor Data")
 
     def __str__(self):
         return self.sensor_name
@@ -91,30 +95,62 @@ class AirData(models.Model):
     temperature_value = models.FloatField(max_length=10, blank=True, null=True)
     temperature_unit = models.CharField(max_length=10, blank=True, null=True)
     temperature_celsius = models.FloatField(max_length=100, blank=True, null=True)
-    temperature_fahrenheit = models.DateTimeField(max_length=100, blank=True, null=True)
+    temperature_fahrenheit = models.FloatField(max_length=100, blank=True, null=True)
     pressure_value = models.FloatField(max_length=10, blank=True, null=True)
     pressure_unit = models.CharField(max_length=10, blank=True, null=True)
     humidity_value = models.FloatField(max_length=10, blank=True, null=True)
     humidity_unit = models.CharField(max_length=10, blank=True, null=True)
     gas_sensor_resistance = models.FloatField(max_length=10, blank=True, null=True)
-    generated_timestamp = models.DateTimeField(max_length=100, auto_now_add=True)
-    created_timestamp = models.DateTimeField(max_length=100, auto_now_add=True)
-    modified_timestamp = models.DateTimeField(max_length=100, auto_now=True)
+    generated_timestamp = models.DateTimeField(max_length=100, auto_now_add=True, blank=True, null=True)
+    created_timestamp = models.DateTimeField(max_length=100, auto_now_add=True, blank=True, null=True)
+    modified_timestamp = models.DateTimeField(max_length=100, auto_now=True, blank=True, null=True)
+
+    class Meta:
+        verbose_name = _("Air Data")
+        verbose_name_plural = _("Air Data")
 
     def __str__(self):
         return f"Air Data {self.generated_timestamp} {self.temperature_value} {self.temperature_unit} "
 
 
 class AirQualityData(models.Model):
-    air_quality_index = models.FloatField(max_length=10, blank=True, null=True)
-    air_quality_class = models.CharField(max_length=10, blank=True, null=True)
-    carbon_dioxide_value = models.FloatField(max_length=10, blank=True)
-    breath_equivalent_voc = models.FloatField(max_length=10, blank=True)
-    air_quality_calibration_status = models.IntegerField(max_length=10, blank=True)
-    air_quality_calibration_meaning = models.CharField(max_length=10, blank=True)
+    air_quality_class_choices = (
+        ("Good", "Good"),
+        ("Acceptable", "Acceptable"),
+        ("Substandard", "Substandard"),
+        ("Poor", "Poor"),
+        ("Bad", "Bad"),
+        ("Very bad", "Very bad"),
+    )
+    AIR_QUALITY_CALIBRATION_STATUS_CHOICES = (
+        (1, 1),
+        (2, 2),
+        (3, 3),
+        (4, 4),
+    )
+
+    AIR_QUALITY_CALIBRATION_MEANING_CHOICES = (
+        ("Low accuracy, self-calibration ongoing", "Low accuracy, self-calibration ongoing"),
+        ("Medium accuracy, self-calibration ongoing", "Medium accuracy, self-calibration ongoing"),
+        ("High accuracy", "High accuracy"),
+        ("Not yet valid, self-calibration incomplete", "Not yet valid, self-calibration incomplete"),
+
+    )
+
+    air_quality_index = models.FloatField(blank=True, null=True)
+    air_quality_class = models.CharField(max_length=10, choices=air_quality_class_choices, blank=True, null=True)
+    carbon_dioxide_value = models.FloatField(blank=True)
+    breath_equivalent_voc = models.FloatField(blank=True)
+    air_quality_calibration_status = models.IntegerField(blank=True, choices=AIR_QUALITY_CALIBRATION_STATUS_CHOICES,
+                                                         null=True)
+    air_quality_calibration_meaning = models.CharField(max_length=10, blank=True, choices=AIR_QUALITY_CALIBRATION_MEANING_CHOICES)
     generated_timestamp = models.DateTimeField(max_length=100, auto_now_add=True)
     created_timestamp = models.DateTimeField(max_length=100, auto_now_add=True)
     modified_timestamp = models.DateTimeField(max_length=100, auto_now=True)
+
+    class Meta:
+        verbose_name = _("Air Quality Data")
+        verbose_name_plural = _("Air Quality Data")
 
     def interpret_aqi_accuracy(self):
         """Provide a readable interpretation of the air quality accuracy code."""
@@ -148,42 +184,88 @@ class AirQualityData(models.Model):
         return f"Air Quality Data {self.generated_timestamp} {self.air_quality_index} {self.air_quality_class} "
 
 
+
+    def save(
+        self, force_insert=False, force_update=False, using=None, update_fields=None
+    ):
+        self.interpret_aqi_value()
+        self.interpret_aqi_accuracy()
+        super().save(force_insert, force_update, using, update_fields)
+
+
 class LightData(models.Model):
-    light_lux = models.FloatField(max_length=10, blank=True, null=True)
-    light_unit = models.CharField(max_length=10, blank=True, null=True)
-    white_level_balance = models.FloatField(max_length=100, blank=True, null=True)
+    light_unit_choices = (
+        ("lux", "lux"),
+        ("candela", "candela"),
+        ("W/m²", "W/m²"),
+        ("W/sr", "W/sr"),)
+
+    light_lux = models.FloatField(blank=True, null=True)
+    light_unit = models.CharField(max_length=10, choices=light_unit_choices, default="lux", blank=True, null=True)
+    white_level_balance = models.FloatField(blank=True, null=True)
     generated_timestamp = models.DateTimeField(max_length=100, auto_now_add=True)
     created_timestamp = models.DateTimeField(max_length=100, auto_now_add=True)
     modified_timestamp = models.DateTimeField(max_length=100, auto_now=True)
+
+    class Meta:
+        verbose_name = _("Light Data")
+        verbose_name_plural = _("Light Data")
 
     def __str__(self):
         return f"Light Data {self.generated_timestamp} {self.light_lux} {self.light_unit} "
 
 
 class SoundData(models.Model):
-    sound_decibel_SPL_dBA = models.FloatField(max_length=10, blank=True, null=True)
-    sound_unit = models.CharField(max_length=10, blank=True, null=True)
-    frequency_band_125 = models.FloatField(max_length=100, blank=True, null=True)
-    frequency_band_250 = models.FloatField(max_length=100, blank=True, null=True)
-    frequency_band_500 = models.FloatField(max_length=100, blank=True, null=True)
-    frequency_band_1000 = models.FloatField(max_length=100, blank=True, null=True)
-    frequency_band_2000 = models.FloatField(max_length=100, blank=True, null=True)
-    frequency_band_4000 = models.FloatField(max_length=100, blank=True, null=True)
-    peak_amp_mPa = models.FloatField(max_length=100, blank=True, null=True)
-    stable = models.FloatField(max_length=100, blank=True, null=True)
+    sound_unit_choices = (
+        ("decibel", "decibel"),
+        ("W/m²", "W/m²"),
+        ("sone²", "sone"),
+        ("phon", "phon"),
+        ("Pa", "Pa"),
+    )
+    sound_decibel_SPL_dBA = models.FloatField(blank=True, null=True)
+    sound_unit = models.CharField(max_length=10, choices=sound_unit_choices, default="decibel", blank=True, null=True)
+    frequency_band_125 = models.FloatField(blank=True, null=True)
+    frequency_band_250 = models.FloatField(blank=True, null=True)
+    frequency_band_500 = models.FloatField(blank=True, null=True)
+    frequency_band_1000 = models.FloatField(blank=True, null=True)
+    frequency_band_2000 = models.FloatField(blank=True, null=True)
+    frequency_band_4000 = models.FloatField(blank=True, null=True)
+    peak_amp_mPa = models.FloatField(blank=True, null=True)
+    stable = models.BooleanField(default=True, blank=True, null=True)
     generated_timestamp = models.DateTimeField(max_length=100, auto_now_add=True)
     created_timestamp = models.DateTimeField(max_length=100, auto_now_add=True)
     modified_timestamp = models.DateTimeField(max_length=100, auto_now=True)
+
+    class Meta:
+        verbose_name = _("Sound Data")
+        verbose_name_plural = _("Sound Data")
 
     def __str__(self):
         return f"Sound Data {self.generated_timestamp} {self.sound_decibel_SPL_dBA} {self.sound_unit}"
 
 
 class ParticleData(models.Model):
-    particle_concentration = models.FloatField(max_length=10, blank=True, null=True)
-    particle_concentration_unit = models.CharField(max_length=10, blank=True, null=True)
-    particle_duty_cycle_pc = models.FloatField(max_length=10, blank=True, null=True)
-    particle_valid = models.BooleanField(max_length=10, blank=True, null=True)
+    particle_concentration_unit_choices = (
+        ("µg/m³", "µg/m³"),
+        ("ppm", "ppm"),
+        ("µg/m³", "µg/m³"),
+        ("ppb", "ppb"),
+        ("mg/m³","mg/m³"),
+        ("g/m³", "g/m³")
+    )
+    particle_concentration = models.FloatField(blank=True, null=True)
+    particle_concentration_unit = models.CharField(max_length=10,choices=particle_concentration_unit_choices, blank=True, null=True)
+    particle_duty_cycle_pc = models.FloatField(blank=True, null=True)
+    particle_valid = models.BooleanField(default=True, blank=True, null=True)
     generated_timestamp = models.DateTimeField(max_length=100, auto_now_add=True)
     created_timestamp = models.DateTimeField(max_length=100, auto_now_add=True)
     modified_timestamp = models.DateTimeField(max_length=100, auto_now=True)
+
+    class Meta:
+        verbose_name = _("Particle Data")
+        verbose_name_plural = _("Particle Data")
+
+
+    def __str__(self):
+        return f"Particle Data {self.generated_timestamp} {self.particle_concentration} {self.particle_concentration_unit} {self.particle_duty_cycle_pc} {self.particle_valid}"

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import User, SensorDataPoint
+from .models import User, SensorDataPoint, LightData, AirQualityData, AirData, SoundData, ParticleData
 from django.contrib.auth.admin import UserAdmin
 from django.utils.translation import gettext_lazy as _
 
@@ -73,4 +73,8 @@ class AccountAdmin(UserAdmin):
 
 admin.site.register(User, AccountAdmin)
 admin.site.register(SensorDataPoint)
-
+admin.site.register(LightData)
+admin.site.register(AirData)
+admin.site.register(AirQualityData)
+admin.site.register(SoundData)
+admin.site.register(ParticleData)

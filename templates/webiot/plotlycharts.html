@@ -1,0 +1,66 @@
+
+
+
+{% extends "webiot/base.html" %}
+{% block content %}
+<div class="row">
+    <div class="col-md-4">
+        <div id="temperaturePlot"></div>
+    </div>
+    <div class="col-md-4">
+        <div id="humidityPlot"></div>
+    </div>
+    <div class="col-md-4">
+        <div id="pressurePlot"></div>
+    </div>
+</div>
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script>
+function createPlot(elementId, data, title, yAxisTitle) {
+    const trace = {
+        x: data.timestamps,
+        y: data[title.toLowerCase()],
+        name: title,
+        type: 'scatter'
+    };
+
+    const layout = {
+        title: title,
+        xaxis: { title: 'Timestamp' },
+        yaxis: { title: yAxisTitle },
+        margin: { l: 50, r: 50, b: 50, t: 50, pad: 4 },
+        height: 300
+    };
+
+    Plotly.newPlot(elementId, [trace], layout, {responsive: true});
+}
+
+function updatePlot(elementId, data, dataKey) {
+    const update = {
+        x: [data.timestamps],
+        y: [data[dataKey]]
+    };
+    Plotly.update(elementId, update);
+}
+
+function updateAllPlots() {
+    fetch('/air-data-json/')
+        .then(response => response.json())
+        .then(data => {
+            updatePlot('temperaturePlot', data, 'temperature');
+            updatePlot('humidityPlot', data, 'humidity');
+            updatePlot('pressurePlot', data, 'pressure');
+        });
+}
+
+fetch('/air-data-json/')
+    .then(response => response.json())
+    .then(data => {
+        createPlot('temperaturePlot', data, 'Temperature', 'Temperature (°C)');
+        createPlot('humidityPlot', data, 'Humidity', 'Humidity (%)');
+        createPlot('pressurePlot', data, 'Pressure', 'Pressure');
+        setInterval(updateAllPlots, 60000);  // Update every minute
+    });
+</script>
+{% endblock %}

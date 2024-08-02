@@ -92,14 +92,33 @@ class SensorDataPoint(models.Model):
 
 
 class AirData(models.Model):
+    temperature_unit_choices = (
+        ("°F", "°F"),
+        ("°C", "°C"),
+        ("K", "K"),
+        )
+    pressure_unit_choices = (
+        ("bars", "bars"),
+        ("Pa", "Pa"),
+        ("psi", "psi"),
+        ("mmHd", "mmHg"),
+        ("atm", "atm"),
+        ("inH₂O", "inH₂O"),
+    )
+    humidity_unit_choices = (
+        ("g/m³", "g/m³"),
+        ("%", "%"),
+        ("g/kg", "g/kg"),
+
+    )
     temperature_value = models.FloatField(max_length=10, blank=True, null=True)
-    temperature_unit = models.CharField(max_length=10, blank=True, null=True)
+    temperature_unit = models.CharField(max_length=10, choices=temperature_unit_choices, blank=True, null=True)
     temperature_celsius = models.FloatField(max_length=100, blank=True, null=True)
     temperature_fahrenheit = models.FloatField(max_length=100, blank=True, null=True)
     pressure_value = models.FloatField(max_length=10, blank=True, null=True)
-    pressure_unit = models.CharField(max_length=10, blank=True, null=True)
+    pressure_unit = models.CharField(max_length=10,choices=pressure_unit_choices, blank=True, null=True)
     humidity_value = models.FloatField(max_length=10, blank=True, null=True)
-    humidity_unit = models.CharField(max_length=10, blank=True, null=True)
+    humidity_unit = models.CharField(max_length=10, choices=humidity_unit_choices, default="%", blank=True, null=True)
     gas_sensor_resistance = models.FloatField(max_length=10, blank=True, null=True)
     generated_timestamp = models.DateTimeField(max_length=100, auto_now_add=True, blank=True, null=True)
     created_timestamp = models.DateTimeField(max_length=100, auto_now_add=True, blank=True, null=True)
@@ -138,12 +157,12 @@ class AirQualityData(models.Model):
     )
 
     air_quality_index = models.FloatField(blank=True, null=True)
-    air_quality_class = models.CharField(max_length=10, choices=air_quality_class_choices, blank=True, null=True)
+    air_quality_class = models.CharField(max_length=50, choices=air_quality_class_choices, blank=True, null=True)
     carbon_dioxide_value = models.FloatField(blank=True)
     breath_equivalent_voc = models.FloatField(blank=True)
     air_quality_calibration_status = models.IntegerField(blank=True, choices=AIR_QUALITY_CALIBRATION_STATUS_CHOICES,
                                                          null=True)
-    air_quality_calibration_meaning = models.CharField(max_length=10, blank=True, choices=AIR_QUALITY_CALIBRATION_MEANING_CHOICES)
+    air_quality_calibration_meaning = models.CharField(max_length=50, blank=True, choices=AIR_QUALITY_CALIBRATION_MEANING_CHOICES)
     generated_timestamp = models.DateTimeField(max_length=100, auto_now_add=True)
     created_timestamp = models.DateTimeField(max_length=100, auto_now_add=True)
     modified_timestamp = models.DateTimeField(max_length=100, auto_now=True)

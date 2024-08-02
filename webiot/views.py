@@ -67,6 +67,9 @@ def create_charts(requests):
 class AirDataChartView(TemplateView):
     template_name = 'webiot/airdatachart.html'
 
+class AirDataPlotlyView(TemplateView):
+    template_name = 'webiot/plotlycharts.html'
+
 def air_data_json(request):
     data = AirData.objects.order_by('-generated_timestamp')[:100]  # Last 100 entries
     return JsonResponse({

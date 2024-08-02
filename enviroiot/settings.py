@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     "crispy_bootstrap5",
     'rest_framework.authtoken',
     "webiot.apps.WebiotConfig",
-    "restiot.apps.RestiotConfig"
+    "restiot.apps.RestiotConfig",
+    "django_seed",
 ]
 
 MIDDLEWARE = [

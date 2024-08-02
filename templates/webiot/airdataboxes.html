@@ -86,8 +86,8 @@
                 const humidityValue = data.humidity[latestData];
 
                 updateBox('temperature-box', 'temperature-value', temperatureValue, 20, 25, 10, 47); // Example thresholds for temperature
-                updateBox('pressure-box', 'pressure-value', pressureValue, 950, 1050); // Example thresholds for pressure
-                updateBox('humidity-box', 'humidity-value', humidityValue, 30, 70); // Example thresholds for humidity
+                updateBox('pressure-box', 'pressure-value', pressureValue, 950, 1050, 600, 2000); // Example thresholds for pressure
+                updateBox('humidity-box', 'humidity-value', humidityValue, 30, 70, 20, 90); // Example thresholds for humidity
             } catch (error) {
                 console.error('Error fetching data:', error);
             }

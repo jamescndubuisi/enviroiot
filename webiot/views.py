@@ -142,3 +142,8 @@ def sound_data_json(request):
         'peak_amp_mPa': [entry.peak_amp_mPa for entry in data],
         'stable': [entry.stable for entry in data],
     })
+
+
+
+class AirQualityLightDataChartView(TemplateView):
+    template_name = 'webiot/airqualitylightdatachart.html'

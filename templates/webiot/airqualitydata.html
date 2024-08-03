@@ -1,13 +1,14 @@
-{% extends "webiot/base.html" %}
 {% block content %}
+<!--<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>-->
+<!--<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>-->
 <style>
-    .charts-container {
+    .chartsz-container {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 20px;
         padding: 20px;
     }
-    .chart-wrapper {
+    .chart-wrappers {
         background-color: #f9f9f9;
         border-radius: 8px;
         padding: 15px;
@@ -15,37 +16,55 @@
     }
 </style>
 
-<div class="charts-container">
-    <div class="chart-wrapper">
+<div class="chartsz-container">
+    <div class="chart-wrappers">
         <canvas id="airqualityindexChart"></canvas>
     </div>
-    <div class="chart-wrapper">
+    <div class="chart-wrappers">
         <canvas id="carbondioxideChart"></canvas>
     </div>
-    <div class="chart-wrapper">
+    <div class="chart-wrappers">
         <canvas id="breathequivalentvocChart"></canvas>
     </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+<!--<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>-->
+<!--<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>-->
 <script>
-const charts = {
+const chartsz = {
     airqualityindexChart: null,
     carbondioxideChart: null,
     breathequivalentvocChart: null
 };
 
-function createChart(canvasId, label, color, title, data) {
+
+
+function createChartp(canvasId, label, color, title, information) {
     const ctx = document.getElementById(canvasId).getContext('2d');
+    const dataKey = canvasId.replace('Chart', '');
+    console.log(information);
+    // Check if the required data exists
+    if (!information || !information.labels || !information[dataKey]) {
+        console.error(`Missing data for ${canvasId}`);
+        return null;
+    }
+
+    const chartData = information[dataKey];
+
+    // Ensure chartData is an array
+    if (!Array.isArray(chartData)) {
+        console.error(`Data for ${canvasId} is not an array`);
+        return null;
+    }
+
     return new Chart(ctx, {
         type: 'line',
         data: {
-            labels: data.labels,
+            labels: information.labels,
             datasets: [{
                 label: label,
-                data: data[canvasId.replace('Chart', '')].map((value, index) => ({
-                    x: new Date(data.labels[index]),
+                data: chartData.map((value, index) => ({
+                    x: new Date(information.labels[index]),
                     y: value
                 })),
                 borderColor: color,
@@ -87,9 +106,8 @@ function createChart(canvasId, label, color, title, data) {
     });
 }
 
-function updateOrCreateCharts(data) {
-    console.log(data); // Log the data object to the console
 
+function updateOrCreateCharts(information) {
     const chartConfigs = [
         { id: 'airqualityindexChart', label: 'Air quality Index', color: 'red', title: 'Air Quality Index' },
         { id: 'carbondioxideChart', label: 'CO₂ (ppm)', color: 'blue', title: 'CO₂' },
@@ -97,21 +115,20 @@ function updateOrCreateCharts(data) {
     ];
 
     chartConfigs.forEach(config => {
-        if (charts[config.id] instanceof Chart) {
-            charts[config.id].destroy();
+        if (chartsz[config.id] instanceof Chart) {
+            chartsz[config.id].destroy();
         }
-        charts[config.id] = createChart(config.id, config.label, config.color, config.title, data);
+        chartsz[config.id] = createChartp(config.id, config.label, config.color, config.title, information);
     });
 }
-
 
 function fetchAndUpdateCharts() {
     fetch('/airquality-data-json/')
         .then(response => response.json())
-        .then(data => {
-            updateOrCreateCharts(data);
+        .then(information => {
+            updateOrCreateCharts(information);
         })
-        .catch(error => console.error('Error fetching data:', error));
+        .catch(error => console.error('Error fetching information:', error));
 }
 
 fetchAndUpdateCharts();

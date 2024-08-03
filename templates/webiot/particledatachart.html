@@ -1,4 +1,4 @@
-{% extends "webiot/base.html" %}
+{% extends "webiot/loggedin.html" %}
 {% block content %}
 <style>
     .charts-container {
@@ -115,7 +115,7 @@ function fetchAndUpdateCharts() {
         .then(data => {
             updateOrCreateCharts(data);
         })
-        .catch(error => console.error('Error fetching data:', error));
+        .catch(error => console.log('Error fetching data:', error));
 }
 
 fetchAndUpdateCharts();

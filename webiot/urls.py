@@ -21,7 +21,7 @@ from django.urls import path
 from .views import (login_page, homepage, sign_up, AirDataChartView, AirQualityDataChartView,
                     air_data_json, air_quality_data_json, AirDataPlotlyView, light_data_json,
                     LightDataChartView, ParticleDataChartView, particle_data_json, AirDataBoxView, sound_data_json,
-                    SoundDataChartView)
+                    SoundDataChartView, AirQualityLightDataChartView)
 
 urlpatterns = [
     path('', homepage, name="home"),
@@ -40,8 +40,9 @@ urlpatterns = [
     path('light-data-chart/', LightDataChartView.as_view(), name='light_data_chart'),
     path('particle-data-json/', particle_data_json, name='particle_data_json'),
     path('particle-data-chart/', ParticleDataChartView.as_view(), name='particle_data_chart'),
-    path('air-data-boxes/', AirDataBoxView.as_view(), name='particle_data_chart'),
+    path('air-data-boxes/', AirDataBoxView.as_view(), name='air_data_boxes'),
     path('sound-data-json/', sound_data_json, name='sound_data_json'),
-    path('sound-data-charts/', SoundDataChartView.as_view(), name='particle_data_chart'),
+    path('sound-data-charts/', SoundDataChartView.as_view(), name='sound_data_chart'),
+    path('air-quality-sound-data-charts/', AirQualityLightDataChartView.as_view(), name='air_quality_light_data_chart'),
 
 ]

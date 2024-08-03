@@ -1,5 +1,7 @@
 
 {% block content %}
+<!--<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>-->
+<!--<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>-->
 <style>
     .chartss-container {
         display: grid;
@@ -25,8 +27,8 @@
 
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+<!--<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>-->
+<!--<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>-->
 <script>
 const chartss = {
     light_luxChart: null,
@@ -86,7 +88,7 @@ function createChart(canvasId, label, color, title, data) {
 }
 
 function updateOrCreateChartss(data) {
-    console.log(data); // Log the data object to the console
+    // console.log(data); // Log the data object to the console
 
     const chartConfigs = [
         { id: 'light_luxChart', label: 'Light Intensity', color: 'red', title: 'Light Intensity' },

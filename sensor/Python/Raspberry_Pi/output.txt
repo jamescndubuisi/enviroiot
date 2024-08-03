@@ -1,0 +1,200 @@
+{'SPL_dBA': 69.3, 'SPL_bands_dB': [60.0, 64.3, 67.4, 61.9, 61.3, 58.4], 'peak_amp_mPa': 533.25, 'stable': 0}
+{'illum_lux': 4.49, 'white': 136}
+{'T_C': 22.4, 'P_Pa': 100864, 'H_pc': 52.3, 'G_ohm': 4303, 'T_F': 72.32, 'F_unit': '°F', 'C_unit': '°C', 'T': 22.4, 'T_unit': '°C'}
+{'AQI': 25.0, 'CO2e': 500.0, 'bVOC': 0.5, 'AQI_accuracy': 0}
+{'SPL_dBA': 59.2, 'SPL_bands_dB': [35.8, 36.3, 48.7, 49.7, 48.1, 51.6], 'peak_amp_mPa': 282.75, 'stable': 1}
+{'illum_lux': 4.67, 'white': 139}
+{'T_C': 21.7, 'P_Pa': 100862, 'H_pc': 54.0, 'G_ohm': 2986, 'T_F': 71.06, 'F_unit': '°F', 'C_unit': '°C', 'T': 21.7, 'T_unit': '°C'}
+{'AQI': 25.0, 'CO2e': 500.0, 'bVOC': 0.5, 'AQI_accuracy': 0}
+{'SPL_dBA': 46.0, 'SPL_bands_dB': [34.0, 38.6, 38.9, 38.3, 40.2, 39.6], 'peak_amp_mPa': 209.83, 'stable': 1}
+{'illum_lux': 3.92, 'white': 120}
+{'T_C': 21.7, 'P_Pa': 100862, 'H_pc': 53.4, 'G_ohm': 3230, 'T_F': 71.06, 'F_unit': '°F', 'C_unit': '°C', 'T': 21.7, 'T_unit': '°C'}
+{'AQI': 25.0, 'CO2e': 500.0, 'bVOC': 0.5, 'AQI_accuracy': 0}
+{'SPL_dBA': 71.8, 'SPL_bands_dB': [72.1, 71.8, 73.2, 59.9, 55.8, 54.9], 'peak_amp_mPa': 861.52, 'stable': 1}
+{'illum_lux': 3.69, 'white': 114}
+{'T_C': 21.7, 'P_Pa': 100862, 'H_pc': 53.1, 'G_ohm': 3594, 'T_F': 71.06, 'F_unit': '°F', 'C_unit': '°C', 'T': 21.7, 'T_unit': '°C'}
+{'AQI': 25.0, 'CO2e': 500.0, 'bVOC': 0.5, 'AQI_accuracy': 0}
+{'SPL_dBA': 74.2, 'SPL_bands_dB': [67.2, 67.4, 76.2, 65.9, 56.9, 61.4], 'peak_amp_mPa': 793.48, 'stable': 1}
+{'illum_lux': 3.86, 'white': 114}
+{'T_C': 21.8, 'P_Pa': 100860, 'H_pc': 52.8, 'G_ohm': 3999, 'T_F': 71.24000000000001, 'F_unit': '°F', 'C_unit': '°C', 'T': 21.8, 'T_unit': '°C'}
+{'AQI': 25.0, 'CO2e': 500.0, 'bVOC': 0.5, 'AQI_accuracy': 0}
+{'SPL_dBA': 65.8, 'SPL_bands_dB': [65.5, 64.6, 66.3, 54.5, 53.7, 51.3], 'peak_amp_mPa': 1034.69, 'stable': 1}
+{'illum_lux': 3.57, 'white': 110}
+{'T_C': 21.8, 'P_Pa': 100862, 'H_pc': 52.6, 'G_ohm': 4420, 'T_F': 71.24000000000001, 'F_unit': '°F', 'C_unit': '°C', 'T': 21.8, 'T_unit': '°C'}
+{'AQI': 25.0, 'CO2e': 500.0, 'bVOC': 0.5, 'AQI_accuracy': 0}
+{'SPL_dBA': 46.3, 'SPL_bands_dB': [35.3, 28.8, 31.4, 31.3, 38.2, 43.3], 'peak_amp_mPa': 1702.07, 'stable': 1}
+{'illum_lux': 4.26, 'white': 130}
+{'T_C': 21.8, 'P_Pa': 100862, 'H_pc': 52.3, 'G_ohm': 4826, 'T_F': 71.24000000000001, 'F_unit': '°F', 'C_unit': '°C', 'T': 21.8, 'T_unit': '°C'}
+{'AQI': 25.0, 'CO2e': 500.0, 'bVOC': 0.5, 'AQI_accuracy': 0}
+{'SPL_dBA': 67.1, 'SPL_bands_dB': [68.6, 67.6, 66.7, 55.2, 54.8, 57.0], 'peak_amp_mPa': 2012.28, 'stable': 1}
+{'illum_lux': 4.49, 'white': 139}
+{'T_C': 21.8, 'P_Pa': 100868, 'H_pc': 52.1, 'G_ohm': 5238, 'T_F': 71.24000000000001, 'F_unit': '°F', 'C_unit': '°C', 'T': 21.8, 'T_unit': '°C'}
+{'AQI': 25.0, 'CO2e': 500.0, 'bVOC': 0.5, 'AQI_accuracy': 0}
+{'SPL_dBA': 45.5, 'SPL_bands_dB': [33.7, 30.7, 35.6, 35.5, 38.7, 41.4], 'peak_amp_mPa': 714.26, 'stable': 1}
+{'illum_lux': 4.2, 'white': 124}
+{'T_C': 21.8, 'P_Pa': 100862, 'H_pc': 51.9, 'G_ohm': 5623, 'T_F': 71.24000000000001, 'F_unit': '°F', 'C_unit': '°C', 'T': 21.8, 'T_unit': '°C'}
+{'AQI': 25.0, 'CO2e': 500.0, 'bVOC': 0.5, 'AQI_accuracy': 0}
+{'SPL_dBA': 73.3, 'SPL_bands_dB': [57.6, 58.0, 72.2, 65.5, 61.3, 61.8], 'peak_amp_mPa': 1114.1, 'stable': 1}
+{'illum_lux': 4.61, 'white': 140}
+{'T_C': 21.8, 'P_Pa': 100870, 'H_pc': 51.8, 'G_ohm': 5972, 'T_F': 71.24000000000001, 'F_unit': '°F', 'C_unit': '°C', 'T': 21.8, 'T_unit': '°C'}
+{'AQI': 25.0, 'CO2e': 500.0, 'bVOC': 0.5, 'AQI_accuracy': 0}
+{'SPL_dBA': 58.0, 'SPL_bands_dB': [52.0, 52.4, 56.5, 48.3, 46.8, 47.2], 'peak_amp_mPa': 708.97, 'stable': 1}
+{'illum_lux': 4.72, 'white': 144}
+{'T_C': 21.8, 'P_Pa': 100868, 'H_pc': 51.8, 'G_ohm': 6377, 'T_F': 71.24000000000001, 'F_unit': '°F', 'C_unit': '°C', 'T': 21.8, 'T_unit': '°C'}
+{'AQI': 25.0, 'CO2e': 500.0, 'bVOC': 0.5, 'AQI_accuracy': 0}
+{'SPL_dBA': 31.0, 'SPL_bands_dB': [32.2, 28.0, 24.9, 24.4, 24.2, 23.7], 'peak_amp_mPa': 588.24, 'stable': 1}
+{'illum_lux': 4.55, 'white': 134}
+{'T_C': 21.8, 'P_Pa': 100866, 'H_pc': 51.8, 'G_ohm': 6845, 'T_F': 71.24000000000001, 'F_unit': '°F', 'C_unit': '°C', 'T': 21.8, 'T_unit': '°C'}
+{'AQI': 25.0, 'CO2e': 500.0, 'bVOC': 0.5, 'AQI_accuracy': 0}
+{'SPL_dBA': 40.3, 'SPL_bands_dB': [33.5, 32.4, 37.4, 29.5, 30.4, 32.3], 'peak_amp_mPa': 278.35, 'stable': 1}
+{'illum_lux': 4.49, 'white': 136}
+{'T_C': 21.8, 'P_Pa': 100864, 'H_pc': 51.7, 'G_ohm': 7264, 'T_F': 71.24000000000001, 'F_unit': '°F', 'C_unit': '°C', 'T': 21.8, 'T_unit': '°C'}
+{'AQI': 25.0, 'CO2e': 500.0, 'bVOC': 0.5, 'AQI_accuracy': 0}
+{'SPL_dBA': 66.5, 'SPL_bands_dB': [73.3, 67.3, 65.9, 55.6, 53.9, 49.3], 'peak_amp_mPa': 973.05, 'stable': 1}
+{'illum_lux': 4.55, 'white': 136}
+{'T_C': 21.8, 'P_Pa': 100866, 'H_pc': 51.7, 'G_ohm': 7680, 'T_F': 71.24000000000001, 'F_unit': '°F', 'C_unit': '°C', 'T': 21.8, 'T_unit': '°C'}
+{'AQI': 25.0, 'CO2e': 500.0, 'bVOC': 0.5, 'AQI_accuracy': 0}
+{'SPL_dBA': 34.3, 'SPL_bands_dB': [29.9, 29.4, 28.9, 27.6, 25.3, 28.0], 'peak_amp_mPa': 718.44, 'stable': 1}
+{'illum_lux': 4.49, 'white': 136}
+{'T_C': 21.8, 'P_Pa': 100866, 'H_pc': 51.7, 'G_ohm': 8110, 'T_F': 71.24000000000001, 'F_unit': '°F', 'C_unit': '°C', 'T': 21.8, 'T_unit': '°C'}
+{'AQI': 25.0, 'CO2e': 500.0, 'bVOC': 0.5, 'AQI_accuracy': 0}
+{'SPL_dBA': 66.4, 'SPL_bands_dB': [53.1, 61.5, 68.2, 55.1, 53.6, 52.3], 'peak_amp_mPa': 767.51, 'stable': 1}
+{'illum_lux': 4.44, 'white': 134}
+{'T_C': 21.8, 'P_Pa': 100868, 'H_pc': 51.6, 'G_ohm': 8506, 'T_F': 71.24000000000001, 'F_unit': '°F', 'C_unit': '°C', 'T': 21.8, 'T_unit': '°C'}
+{'AQI': 25.0, 'CO2e': 500.0, 'bVOC': 0.5, 'AQI_accuracy': 0}
+{'SPL_dBA': 54.1, 'SPL_bands_dB': [40.5, 45.7, 54.9, 44.0, 34.6, 44.9], 'peak_amp_mPa': 834.4, 'stable': 1}
+{'illum_lux': 4.78, 'white': 142}
+{'T_C': 21.8, 'P_Pa': 100864, 'H_pc': 51.5, 'G_ohm': 8943, 'T_F': 71.24000000000001, 'F_unit': '°F', 'C_unit': '°C', 'T': 21.8, 'T_unit': '°C'}
+{'AQI': 25.0, 'CO2e': 500.0, 'bVOC': 0.5, 'AQI_accuracy': 0}
+{'SPL_dBA': 62.3, 'SPL_bands_dB': [56.1, 54.5, 63.1, 49.8, 49.8, 50.4], 'peak_amp_mPa': 300.11, 'stable': 1}
+{'illum_lux': 2.59, 'white': 81}
+{'T_C': 21.8, 'P_Pa': 100866, 'H_pc': 51.5, 'G_ohm': 9351, 'T_F': 71.24000000000001, 'F_unit': '°F', 'C_unit': '°C', 'T': 21.8, 'T_unit': '°C'}
+{'AQI': 25.0, 'CO2e': 500.0, 'bVOC': 0.5, 'AQI_accuracy': 0}
+{'SPL_dBA': 55.5, 'SPL_bands_dB': [37.7, 41.6, 54.5, 49.6, 45.0, 46.8], 'peak_amp_mPa': 281.42, 'stable': 1}
+{'illum_lux': 4.84, 'white': 149}
+{'T_C': 21.8, 'P_Pa': 100866, 'H_pc': 51.5, 'G_ohm': 9752, 'T_F': 71.24000000000001, 'F_unit': '°F', 'C_unit': '°C', 'T': 21.8, 'T_unit': '°C'}
+{'AQI': 25.0, 'CO2e': 500.0, 'bVOC': 0.5, 'AQI_accuracy': 0}
+{'SPL_dBA': 60.7, 'SPL_bands_dB': [63.6, 65.4, 56.6, 45.5, 45.7, 45.6], 'peak_amp_mPa': 779.52, 'stable': 1}
+{'illum_lux': 5.01, 'white': 151}
+{'T_C': 21.8, 'P_Pa': 100868, 'H_pc': 51.4, 'G_ohm': 10190, 'T_F': 71.24000000000001, 'F_unit': '°F', 'C_unit': '°C', 'T': 21.8, 'T_unit': '°C'}
+{'AQI': 25.0, 'CO2e': 500.0, 'bVOC': 0.5, 'AQI_accuracy': 0}
+{'SPL_dBA': 40.3, 'SPL_bands_dB': [30.1, 26.7, 28.5, 28.3, 32.8, 35.7], 'peak_amp_mPa': 601.71, 'stable': 1}
+{'illum_lux': 4.84, 'white': 149}
+{'T_C': 21.8, 'P_Pa': 100864, 'H_pc': 51.5, 'G_ohm': 10625, 'T_F': 71.24000000000001, 'F_unit': '°F', 'C_unit': '°C', 'T': 21.8, 'T_unit': '°C'}
+{'AQI': 25.0, 'CO2e': 500.0, 'bVOC': 0.5, 'AQI_accuracy': 0}
+{'SPL_dBA': 57.8, 'SPL_bands_dB': [62.8, 56.4, 58.7, 44.3, 43.2, 45.1], 'peak_amp_mPa': 725.64, 'stable': 1}
+{'illum_lux': 4.95, 'white': 153}
+{'T_C': 21.9, 'P_Pa': 100866, 'H_pc': 51.5, 'G_ohm': 10994, 'T_F': 71.42, 'F_unit': '°F', 'C_unit': '°C', 'T': 21.9, 'T_unit': '°C'}
+{'AQI': 25.0, 'CO2e': 500.0, 'bVOC': 0.5, 'AQI_accuracy': 0}
+{'SPL_dBA': 49.2, 'SPL_bands_dB': [33.1, 37.2, 47.7, 36.9, 38.4, 40.2], 'peak_amp_mPa': 384.65, 'stable': 1}
+{'illum_lux': 5.01, 'white': 150}
+{'T_C': 21.8, 'P_Pa': 100866, 'H_pc': 51.5, 'G_ohm': 11414, 'T_F': 71.24000000000001, 'F_unit': '°F', 'C_unit': '°C', 'T': 21.8, 'T_unit': '°C'}
+{'AQI': 25.0, 'CO2e': 500.0, 'bVOC': 0.5, 'AQI_accuracy': 0}
+{'SPL_dBA': 48.4, 'SPL_bands_dB': [44.1, 36.1, 40.1, 39.2, 41.4, 43.7], 'peak_amp_mPa': 581.2, 'stable': 1}
+{'illum_lux': 4.49, 'white': 138}
+{'T_C': 21.8, 'P_Pa': 100862, 'H_pc': 51.5, 'G_ohm': 11842, 'T_F': 71.24000000000001, 'F_unit': '°F', 'C_unit': '°C', 'T': 21.8, 'T_unit': '°C'}
+{'AQI': 25.0, 'CO2e': 500.0, 'bVOC': 0.5, 'AQI_accuracy': 0}
+{'SPL_dBA': 67.4, 'SPL_bands_dB': [63.9, 60.8, 66.2, 56.1, 55.4, 56.4], 'peak_amp_mPa': 1348.48, 'stable': 1}
+{'illum_lux': 4.49, 'white': 140}
+{'T_C': 21.9, 'P_Pa': 100862, 'H_pc': 51.6, 'G_ohm': 12152, 'T_F': 71.42, 'F_unit': '°F', 'C_unit': '°C', 'T': 21.9, 'T_unit': '°C'}
+{'AQI': 25.0, 'CO2e': 500.0, 'bVOC': 0.5, 'AQI_accuracy': 0}
+{'SPL_dBA': 49.9, 'SPL_bands_dB': [40.9, 38.0, 39.1, 39.8, 43.5, 45.0], 'peak_amp_mPa': 700.74, 'stable': 1}
+{'illum_lux': 4.49, 'white': 140}
+{'T_C': 21.9, 'P_Pa': 100868, 'H_pc': 51.6, 'G_ohm': 12613, 'T_F': 71.42, 'F_unit': '°F', 'C_unit': '°C', 'T': 21.9, 'T_unit': '°C'}
+{'AQI': 25.0, 'CO2e': 500.0, 'bVOC': 0.5, 'AQI_accuracy': 0}
+{'SPL_dBA': 59.0, 'SPL_bands_dB': [64.1, 56.6, 58.5, 47.6, 45.8, 47.3], 'peak_amp_mPa': 955.95, 'stable': 1}
+{'illum_lux': 4.9, 'white': 149}
+{'T_C': 21.9, 'P_Pa': 100868, 'H_pc': 51.6, 'G_ohm': 12964, 'T_F': 71.42, 'F_unit': '°F', 'C_unit': '°C', 'T': 21.9, 'T_unit': '°C'}
+{'AQI': 25.0, 'CO2e': 500.0, 'bVOC': 0.5, 'AQI_accuracy': 0}
+{'SPL_dBA': 55.4, 'SPL_bands_dB': [58.5, 51.8, 54.7, 48.2, 41.9, 41.6], 'peak_amp_mPa': 614.58, 'stable': 1}
+{'illum_lux': 4.61, 'white': 142}
+{'T_C': 21.9, 'P_Pa': 100868, 'H_pc': 51.8, 'G_ohm': 13362, 'T_F': 71.42, 'F_unit': '°F', 'C_unit': '°C', 'T': 21.9, 'T_unit': '°C'}
+{'AQI': 25.0, 'CO2e': 500.0, 'bVOC': 0.5, 'AQI_accuracy': 0}
+{'SPL_dBA': 35.6, 'SPL_bands_dB': [30.7, 27.5, 32.8, 28.9, 26.3, 25.0], 'peak_amp_mPa': 532.18, 'stable': 1}
+{'illum_lux': 4.49, 'white': 138}
+{'T_C': 21.9, 'P_Pa': 100864, 'H_pc': 51.8, 'G_ohm': 13712, 'T_F': 71.42, 'F_unit': '°F', 'C_unit': '°C', 'T': 21.9, 'T_unit': '°C'}
+{'AQI': 25.0, 'CO2e': 500.0, 'bVOC': 0.5, 'AQI_accuracy': 0}
+{'SPL_dBA': 33.3, 'SPL_bands_dB': [33.5, 27.3, 29.2, 25.7, 26.2, 26.1], 'peak_amp_mPa': 721.81, 'stable': 1}
+{'illum_lux': 4.49, 'white': 143}
+{'T_C': 21.9, 'P_Pa': 100864, 'H_pc': 51.7, 'G_ohm': 14109, 'T_F': 71.42, 'F_unit': '°F', 'C_unit': '°C', 'T': 21.9, 'T_unit': '°C'}
+{'AQI': 25.0, 'CO2e': 500.0, 'bVOC': 0.5, 'AQI_accuracy': 0}
+{'SPL_dBA': 73.7, 'SPL_bands_dB': [65.1, 65.3, 76.1, 63.2, 54.0, 53.3], 'peak_amp_mPa': 599.25, 'stable': 1}
+{'illum_lux': 4.49, 'white': 140}
+{'T_C': 21.9, 'P_Pa': 100860, 'H_pc': 51.6, 'G_ohm': 14520, 'T_F': 71.42, 'F_unit': '°F', 'C_unit': '°C', 'T': 21.9, 'T_unit': '°C'}
+{'AQI': 25.0, 'CO2e': 500.0, 'bVOC': 0.5, 'AQI_accuracy': 0}
+{'SPL_dBA': 79.0, 'SPL_bands_dB': [60.8, 65.9, 80.4, 70.3, 64.9, 65.0], 'peak_amp_mPa': 1215.2, 'stable': 1}
+{'illum_lux': 4.55, 'white': 138}
+{'T_C': 21.9, 'P_Pa': 100866, 'H_pc': 51.5, 'G_ohm': 14923, 'T_F': 71.42, 'F_unit': '°F', 'C_unit': '°C', 'T': 21.9, 'T_unit': '°C'}
+{'AQI': 25.0, 'CO2e': 500.0, 'bVOC': 0.5, 'AQI_accuracy': 0}
+{'SPL_dBA': 67.1, 'SPL_bands_dB': [66.4, 68.7, 67.1, 50.0, 49.0, 45.2], 'peak_amp_mPa': 706.58, 'stable': 1}
+{'illum_lux': 4.55, 'white': 138}
+{'T_C': 21.9, 'P_Pa': 100870, 'H_pc': 51.5, 'G_ohm': 15316, 'T_F': 71.42, 'F_unit': '°F', 'C_unit': '°C', 'T': 21.9, 'T_unit': '°C'}
+{'AQI': 25.0, 'CO2e': 500.0, 'bVOC': 0.5, 'AQI_accuracy': 0}
+{'SPL_dBA': 45.9, 'SPL_bands_dB': [38.3, 34.4, 42.5, 36.4, 38.1, 40.7], 'peak_amp_mPa': 755.28, 'stable': 1}
+{'illum_lux': 4.67, 'white': 143}
+{'T_C': 21.9, 'P_Pa': 100858, 'H_pc': 51.4, 'G_ohm': 15637, 'T_F': 71.42, 'F_unit': '°F', 'C_unit': '°C', 'T': 21.9, 'T_unit': '°C'}
+{'AQI': 25.0, 'CO2e': 500.0, 'bVOC': 0.5, 'AQI_accuracy': 0}
+{'SPL_dBA': 42.7, 'SPL_bands_dB': [32.7, 30.2, 32.4, 33.1, 36.5, 38.0], 'peak_amp_mPa': 827.56, 'stable': 1}
+{'illum_lux': 4.15, 'white': 128}
+{'T_C': 21.9, 'P_Pa': 100862, 'H_pc': 51.4, 'G_ohm': 16069, 'T_F': 71.42, 'F_unit': '°F', 'C_unit': '°C', 'T': 21.9, 'T_unit': '°C'}
+{'AQI': 25.0, 'CO2e': 500.0, 'bVOC': 0.5, 'AQI_accuracy': 0}
+{'SPL_dBA': 57.5, 'SPL_bands_dB': [38.6, 43.8, 52.8, 44.2, 51.8, 50.6], 'peak_amp_mPa': 137.92, 'stable': 1}
+{'illum_lux': 4.55, 'white': 138}
+{'T_C': 21.9, 'P_Pa': 100866, 'H_pc': 51.4, 'G_ohm': 16396, 'T_F': 71.42, 'F_unit': '°F', 'C_unit': '°C', 'T': 21.9, 'T_unit': '°C'}
+{'AQI': 25.0, 'CO2e': 500.0, 'bVOC': 0.5, 'AQI_accuracy': 0}
+{'SPL_dBA': 45.4, 'SPL_bands_dB': [34.2, 30.2, 36.8, 36.0, 40.4, 39.3], 'peak_amp_mPa': 616.09, 'stable': 1}
+{'illum_lux': 5.07, 'white': 157}
+{'T_C': 21.9, 'P_Pa': 100864, 'H_pc': 51.4, 'G_ohm': 16777, 'T_F': 71.42, 'F_unit': '°F', 'C_unit': '°C', 'T': 21.9, 'T_unit': '°C'}
+{'AQI': 25.0, 'CO2e': 500.0, 'bVOC': 0.5, 'AQI_accuracy': 0}
+{'SPL_dBA': 68.4, 'SPL_bands_dB': [62.7, 61.0, 66.5, 62.5, 56.5, 57.7], 'peak_amp_mPa': 931.53, 'stable': 1}
+{'illum_lux': 4.44, 'white': 134}
+{'T_C': 21.9, 'P_Pa': 100864, 'H_pc': 51.3, 'G_ohm': 17120, 'T_F': 71.42, 'F_unit': '°F', 'C_unit': '°C', 'T': 21.9, 'T_unit': '°C'}
+{'AQI': 25.0, 'CO2e': 500.0, 'bVOC': 0.5, 'AQI_accuracy': 0}
+{'SPL_dBA': 74.0, 'SPL_bands_dB': [68.0, 70.0, 77.3, 64.1, 55.9, 52.1], 'peak_amp_mPa': 1142.03, 'stable': 1}
+{'illum_lux': 3.23, 'white': 104}
+{'T_C': 21.9, 'P_Pa': 100864, 'H_pc': 51.4, 'G_ohm': 17433, 'T_F': 71.42, 'F_unit': '°F', 'C_unit': '°C', 'T': 21.9, 'T_unit': '°C'}
+{'AQI': 25.0, 'CO2e': 500.0, 'bVOC': 0.5, 'AQI_accuracy': 0}
+{'SPL_dBA': 55.1, 'SPL_bands_dB': [44.4, 35.9, 43.6, 45.2, 47.5, 50.7], 'peak_amp_mPa': 1048.95, 'stable': 1}
+{'illum_lux': 4.26, 'white': 132}
+{'T_C': 21.9, 'P_Pa': 100860, 'H_pc': 51.5, 'G_ohm': 17789, 'T_F': 71.42, 'F_unit': '°F', 'C_unit': '°C', 'T': 21.9, 'T_unit': '°C'}
+{'AQI': 25.0, 'CO2e': 500.0, 'bVOC': 0.5, 'AQI_accuracy': 0}
+{'SPL_dBA': 50.4, 'SPL_bands_dB': [33.1, 32.9, 50.1, 38.3, 41.9, 41.7], 'peak_amp_mPa': 173.48, 'stable': 1}
+{'illum_lux': 4.61, 'white': 144}
+{'T_C': 21.9, 'P_Pa': 100864, 'H_pc': 51.6, 'G_ohm': 18159, 'T_F': 71.42, 'F_unit': '°F', 'C_unit': '°C', 'T': 21.9, 'T_unit': '°C'}
+{'AQI': 25.0, 'CO2e': 500.0, 'bVOC': 0.5, 'AQI_accuracy': 0}
+{'SPL_dBA': 33.6, 'SPL_bands_dB': [31.5, 24.9, 25.0, 26.9, 26.3, 27.8], 'peak_amp_mPa': 125.03, 'stable': 1}
+{'illum_lux': 4.61, 'white': 144}
+{'T_C': 21.9, 'P_Pa': 100864, 'H_pc': 51.6, 'G_ohm': 18529, 'T_F': 71.42, 'F_unit': '°F', 'C_unit': '°C', 'T': 21.9, 'T_unit': '°C'}
+{'AQI': 25.0, 'CO2e': 500.0, 'bVOC': 0.5, 'AQI_accuracy': 0}
+{'SPL_dBA': 57.7, 'SPL_bands_dB': [57.1, 54.5, 60.3, 46.4, 38.3, 36.2], 'peak_amp_mPa': 629.52, 'stable': 1}
+{'illum_lux': 4.67, 'white': 144}
+{'T_C': 21.9, 'P_Pa': 100864, 'H_pc': 51.6, 'G_ohm': 18829, 'T_F': 71.42, 'F_unit': '°F', 'C_unit': '°C', 'T': 21.9, 'T_unit': '°C'}
+{'AQI': 25.0, 'CO2e': 500.0, 'bVOC': 0.5, 'AQI_accuracy': 0}
+{'SPL_dBA': 55.9, 'SPL_bands_dB': [42.7, 38.9, 51.5, 47.0, 46.6, 50.4], 'peak_amp_mPa': 972.64, 'stable': 1}
+{'illum_lux': 4.44, 'white': 136}
+{'T_C': 21.9, 'P_Pa': 100860, 'H_pc': 51.6, 'G_ohm': 19138, 'T_F': 71.42, 'F_unit': '°F', 'C_unit': '°C', 'T': 21.9, 'T_unit': '°C'}
+{'AQI': 25.0, 'CO2e': 500.0, 'bVOC': 0.5, 'AQI_accuracy': 0}
+{'SPL_dBA': 39.2, 'SPL_bands_dB': [36.0, 30.2, 34.9, 28.6, 32.1, 33.6], 'peak_amp_mPa': 857.82, 'stable': 1}
+{'illum_lux': 4.38, 'white': 138}
+{'T_C': 21.9, 'P_Pa': 100860, 'H_pc': 51.5, 'G_ohm': 19549, 'T_F': 71.42, 'F_unit': '°F', 'C_unit': '°C', 'T': 21.9, 'T_unit': '°C'}
+{'AQI': 25.0, 'CO2e': 500.0, 'bVOC': 0.5, 'AQI_accuracy': 0}
+{'SPL_dBA': 46.7, 'SPL_bands_dB': [35.6, 31.2, 35.5, 36.6, 40.3, 42.6], 'peak_amp_mPa': 664.48, 'stable': 1}
+{'illum_lux': 4.26, 'white': 134}
+{'T_C': 22.0, 'P_Pa': 100862, 'H_pc': 51.5, 'G_ohm': 19903, 'T_F': 71.6, 'F_unit': '°F', 'C_unit': '°C', 'T': 22.0, 'T_unit': '°C'}
+{'AQI': 25.0, 'CO2e': 500.0, 'bVOC': 0.5, 'AQI_accuracy': 0}
+{'SPL_dBA': 69.7, 'SPL_bands_dB': [65.5, 64.5, 71.1, 60.5, 58.1, 54.4], 'peak_amp_mPa': 658.15, 'stable': 1}
+{'illum_lux': 4.55, 'white': 141}
+{'T_C': 22.0, 'P_Pa': 100862, 'H_pc': 51.5, 'G_ohm': 20269, 'T_F': 71.6, 'F_unit': '°F', 'C_unit': '°C', 'T': 22.0, 'T_unit': '°C'}
+{'AQI': 25.0, 'CO2e': 500.0, 'bVOC': 0.5, 'AQI_accuracy': 0}
+{'SPL_dBA': 63.3, 'SPL_bands_dB': [64.8, 61.4, 65.9, 50.3, 47.3, 44.8], 'peak_amp_mPa': 828.27, 'stable': 1}
+{'illum_lux': 4.38, 'white': 138}
+{'T_C': 22.0, 'P_Pa': 100864, 'H_pc': 51.5, 'G_ohm': 20628, 'T_F': 71.6, 'F_unit': '°F', 'C_unit': '°C', 'T': 22.0, 'T_unit': '°C'}
+{'AQI': 25.0, 'CO2e': 500.0, 'bVOC': 0.5, 'AQI_accuracy': 0}
+{'SPL_dBA': 57.8, 'SPL_bands_dB': [62.3, 57.0, 58.7, 47.9, 43.3, 42.3], 'peak_amp_mPa': 636.12, 'stable': 1}
+{'illum_lux': 4.44, 'white': 138}
+{'T_C': 22.0, 'P_Pa': 100862, 'H_pc': 51.5, 'G_ohm': 20896, 'T_F': 71.6, 'F_unit': '°F', 'C_unit': '°C', 'T': 22.0, 'T_unit': '°C'}
+{'AQI': 25.0, 'CO2e': 500.0, 'bVOC': 0.5, 'AQI_accuracy': 0}
+{'SPL_dBA': 51.6, 'SPL_bands_dB': [35.8, 33.3, 52.2, 44.6, 36.2, 38.0], 'peak_amp_mPa': 667.6, 'stable': 1}
+{'illum_lux': 4.03, 'white': 130}
+{'T_C': 22.0, 'P_Pa': 100862, 'H_pc': 51.5, 'G_ohm': 21278, 'T_F': 71.6, 'F_unit': '°F', 'C_unit': '°C', 'T': 22.0, 'T_unit': '°C'}
+{'AQI': 25.0, 'CO2e': 500.0, 'bVOC': 0.5, 'AQI_accuracy': 0}

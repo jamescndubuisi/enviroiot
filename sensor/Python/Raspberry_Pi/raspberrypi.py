@@ -82,6 +82,7 @@ while True:
     # Create the updated web page ready for client requests, passing
     # the current date and time for displaying with the data
     data = (f'{datetime.now():%H:%M:%S %Y-%m-%d}',air_data, air_quality_data, light_data, sound_data, particle_data)
+
     send_data = requests.post(
         f'http://{SERVER_NAME}:{SERVER_PORT}/', data=data, api_key=API_KEY)
     # server.SimpleWebpageHandler.assemble_web_page(

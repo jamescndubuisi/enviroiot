@@ -268,13 +268,13 @@ class ParticleData(models.Model):
     particle_concentration_unit_choices = (
         ("µg/m³", "µg/m³"),
         ("ppm", "ppm"),
-        ("µg/m³", "µg/m³"),
         ("ppb", "ppb"),
         ("mg/m³","mg/m³"),
         ("g/m³", "g/m³")
     )
     particle_concentration = models.FloatField(blank=True, null=True)
-    particle_concentration_unit = models.CharField(max_length=10,choices=particle_concentration_unit_choices, blank=True, null=True)
+    particle_concentration_unit = models.CharField(max_length=10,choices=particle_concentration_unit_choices,
+                                                   default="µg/m³", blank=True, null=True)
     particle_duty_cycle_pc = models.FloatField(blank=True, null=True)
     particle_valid = models.BooleanField(default=True, blank=True, null=True)
     generated_timestamp = models.DateTimeField(max_length=100, auto_now_add=True)

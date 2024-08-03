@@ -4,12 +4,19 @@ import sensor_package.servers as server
 import sensor_package.sensor_functions as sensor
 import sensor_package.sensor_constants as const
 import requests
+from sendapidata import send_light_data, send_sound_data, send_air_data, send_air_quality_data, send_particle_data
+
+API_KEY = 'edb34767f9a38ab8dbea306a3c9dd8c016204adb'
+# Headers for the request, including the Authorization header with the token
+headers = {
+    'Authorization': f'Token {API_KEY}',
+    'Content-Type': 'application/json'
+}
 
 cycle_period = const.CYCLE_PERIOD_3_S
 SERVER_PORT = 8000
 SERVER_NAME = "www.wonderlusts.org/enviroiot"
-API_KEY = ""
-
+API_URL = 'http://localhost:8000/api/'
 
 (GPIO, I2C_bus) = sensor.SensorHardwareSetup()
 
@@ -81,9 +88,16 @@ while True:
 
     # Create the updated web page ready for client requests, passing
     # the current date and time for displaying with the data
-    data = (f'{datetime.now():%H:%M:%S %Y-%m-%d}',air_data, air_quality_data, light_data, sound_data, particle_data)
+    # data = (f'{datetime.now():%H:%M:%S %Y-%m-%d}',air_data, air_quality_data, light_data, sound_data, particle_data)
+    #
+    # send_data = requests.post(
+    #     f'http://{SERVER_NAME}:{SERVER_PORT}/', data=data, api_key=API_KEY)
 
-    send_data = requests.post(
-        f'http://{SERVER_NAME}:{SERVER_PORT}/', data=data, api_key=API_KEY)
+    sent_light = send_light_data(data=light_data)
+    sent_particles = send_particle_data(data=particle_data)
+    sent_air_quality = send_air_quality_data(data=air_quality_data)
+    sent_air = send_air_data(data=air_data)
+    send_sound_data(data=sound_data)
+
     # server.SimpleWebpageHandler.assemble_web_page(
     #     f'{datetime.now():%H:%M:%S %Y-%m-%d}')

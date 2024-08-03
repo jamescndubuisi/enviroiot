@@ -1,9 +1,21 @@
 import requests
+# API endpoint URL
+api_url = 'http://localhost:8000/api/'
+
+# Token for authentication
+token = 'edb34767f9a38ab8dbea306a3c9dd8c016204adb'
+# Headers for the request, including the Authorization header with the token
+
+headers = {
+    'Authorization': f'Token {token}',
+    'Content-Type': 'application/json'
+}
 
 # data = {'SPL_dBA': 69.3, 'SPL_bands_dB': [60.0, 64.3, 67.4, 61.9, 61.3, 58.4], 'peak_amp_mPa': 533.25, 'stable': 0}
 
 
 def convert_sound_data(data):
+    print("Converting sound data")
     frequency_bands = {
       'frequency_band_125': data['SPL_bands_dB'][0],
       'frequency_band_250': data['SPL_bands_dB'][1],
@@ -23,6 +35,7 @@ def convert_sound_data(data):
 
 
 def convert_particle_data(data):
+    print("Converting particle data")
     new_data = {
         'particle_concentration': data['concentration'],
         'particle_duty_cycle_pc': data['duty_cycle_pc'],
@@ -32,6 +45,7 @@ def convert_particle_data(data):
 
 
 def convert_light_data(data):
+    print("Converting light data")
     new_data = {
       'light_lux': data['illum_lux'],
       'white_level_balance': data['white']
@@ -40,7 +54,8 @@ def convert_light_data(data):
 
 
 def convert_air_data(data):
-  new_data = {
+    print("Converting air data")
+    new_data = {
       'temperature_celsius': data['T_C'],
       'pressure_value': data['P_Pa'],
       'humidity_value': data['H_pc'],
@@ -48,39 +63,27 @@ def convert_air_data(data):
       'temperature_fahrenheit': data['T_F'],
       'temperature_unit': data['T_unit'],
       'temperature_value': data['T']
-  }
-  return new_data
+    }
+    return new_data
 
 
 def convert_air_quality_data(data):
-  """Converts the input data dictionary to the desired format.
+    """Converts the input data dictionary to the desired format.
 
-  Args:
+    Args:
     data: The input data dictionary.
 
-  Returns:
+    Returns:
     The converted data dictionary.
-  """
-
-  new_data = {
+    """
+    print("Converting air quality data")
+    new_data = {
       'air_quality_index': data['AQI'],
       'carbon_dioxide_value': data['CO2e'],
       'breath_equivalent_voc': data['bVOC'],
       'air_quality_calibration_status': data['AQI_accuracy']
-  }
-  return new_data
-
-
-# API endpoint URL
-api_url = 'http://localhost:8000/api/'
-
-# Token for authentication
-token = 'edb34767f9a38ab8dbea306a3c9dd8c016204adb'
-# Headers for the request, including the Authorization header with the token
-headers = {
-    'Authorization': f'Token {token}',
-    'Content-Type': 'application/json'
-}
+    }
+    return new_data
 
 
 def send_air_quality_data(url="air-quality-data/", data=None):
@@ -98,6 +101,7 @@ def send_air_quality_data(url="air-quality-data/", data=None):
         }
 
     # Make the POST request
+    print("Sending air quality data")
     response = requests.post(api_url+url, json=data, headers=headers)
 
     # Print the response from the server
@@ -125,6 +129,7 @@ def send_air_data(url="air-data/", data=None):
         }
 
     # Make the POST request
+    print("Sending air data")
     response = requests.post(api_url+url, json=data, headers=headers)
 
     # Print the response from the server
@@ -154,6 +159,7 @@ def send_sound_data(url="sound-data/", data=None):
 
         }
 
+    print("Sending sound data")
     # Make the POST request
     response = requests.post(api_url+url, json=data, headers=headers)
 
@@ -178,7 +184,7 @@ def send_particle_data(url="particle-data/", data=None):
 
 
         }
-
+    print("Sending particle data")
     # Make the POST request
     response = requests.post(api_url+url, json=data, headers=headers)
 
@@ -189,16 +195,22 @@ def send_particle_data(url="particle-data/", data=None):
     return response
 
 
-def send_light_data(url="light-data/"):
-    # Data to be sent in the POST request
-    data = {
-        'light_lux': 23.7,
-        'white_level_balance': 5.90,
+def send_light_data(url="light-data/", data=None):
+
+    if data:
+        data = convert_light_data(data)
+    else:
+        print("No data received. Sending default data")
+        # Data to be sent in the POST request
+        data = {
+            'light_lux': 23.7,
+            'white_level_balance': 5.90,
 
 
-    }
+        }
 
     # Make the POST request
+    print("Sending light data")
     response = requests.post(api_url+url, json=data, headers=headers)
 
     # Print the response from the server
@@ -206,13 +218,4 @@ def send_light_data(url="light-data/"):
     print('Response Body:', response.json())
 
     return response
-# outputaqd = send_air_quality_data()
-# outputad = send_air_data()
-# outputsd = send_sound_data()
-# outputld = send_light_data()
-
-
-# outputpd = send_particle_data()
-
-
 

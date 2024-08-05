@@ -142,6 +142,7 @@ class AirQualityData(models.Model):
         ("Very bad", "Very bad"),
     )
     AIR_QUALITY_CALIBRATION_STATUS_CHOICES = (
+        (0, 0),
         (1, 1),
         (2, 2),
         (3, 3),

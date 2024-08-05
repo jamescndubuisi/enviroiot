@@ -57,19 +57,30 @@
                     maintainAspectRatio: false,
                     aspectRatio: 1.5,
                     scales: {
-                        x: {
-                            type: 'time',
-                            time: {
-                                unit: 'minute',
-                                displayFormats: {
-                                    minute: 'HH:mm'
-                                }
-                            },
-                            title: {
-                                display: true,
-                                text: 'Time'
-                            }
+                        // x: {
+                        //     type: 'time',
+                        //     time: {
+                        //         unit: 'minute',
+                        //         displayFormats: {
+                        //             minute: 'HH:mm'
+                        //         }
+                        //     },
+                        //     title: {
+                        //         display: true,
+                        //         text: 'Time'
+                        //     }
+                        // }
+                         x: {
+                        type: 'time',
+                        time: {
+                            parser: 'yyyy-MM-dd HH:mm:ss',
+                            tooltipFormat: 'll HH:mm'
                         },
+                        title: {
+                            display: true,
+                            text: 'Time'
+                        }
+                    },
                         y: {
                             beginAtZero: true
                         }

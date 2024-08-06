@@ -15,7 +15,7 @@ headers = {
 
 cycle_period = const.CYCLE_PERIOD_3_S
 SERVER_PORT = 8000
-SERVER_NAME = "www.wonderlusts.org/enviroiot"
+SERVER_NAME = "http://localhost:8000/api/"
 API_URL = 'http://localhost:8000/api/'
 
 (GPIO, I2C_bus) = sensor.SensorHardwareSetup()
